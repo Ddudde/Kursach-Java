@@ -1,7 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'org.openjfx.javafxplugin' version '0.0.5'
 	id 'edu.sc.seis.launch4j' version '2.4.6'
 	id 'java'
 }
@@ -13,17 +12,25 @@ sourceCompatibility = 11
 repositories {
 	mavenCentral()
 	jcenter()
+	maven { url 'https://jitpack.io' }
+	mavenLocal()
+	maven {
+		url  "https://dl.bintray.com/javasabr/maven"
+	}
 }
 
 dependencies {
-	compile files('lib/jme-jfx-1.5.2.jar', 'lib/rlib-6.1.2.jar')
 	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
 	compile 'org.lwjgl:lwjgl'
-	compile 'com.jayfella:jme-jfx-11:1.1.5'
 	compile 'org.jetbrains:annotations:18.0.0'
 	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'org.openjfx:javafx-base:13:win'
+	compile 'org.openjfx:javafx-controls:13:win'
+	compile 'org.openjfx:javafx-graphics:13:win'
+	compile 'org.openjfx:javafx-fxml:13:win'
+	compile 'org.openjfx:javafx-media:13:win'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 }
@@ -41,8 +48,4 @@ launch4j {
 	mainClassName = "ru.mirea.MireaApplication"
 	outfile = "Comps.exe"
 	jar = '../libs/Comps-0.9.jar'
-}
-
-javafx {
-	modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
 }

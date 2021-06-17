@@ -5,6 +5,7 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.MouseAxisTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
+import com.jme3.jfx.injfx.processor.FrameTransferSceneProcessor;
 import com.jme3.light.AmbientLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -16,7 +17,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -27,8 +27,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
-import com.jme3x.jfx.injfx.JmeToJFXApplication;
-import com.jme3x.jfx.injfx.JmeToJFXIntegrator;
+import com.jme3.jfx.injfx.JmeToJfxApplication;
+import com.jme3.jfx.injfx.JmeToJfxIntegrator;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -89,22 +89,22 @@ public class Start extends Application {
         ImageView view3d = new ImageView();
         view3d.setFitWidth(640);
         view3d.setFitHeight(640);
-        JmeToJFXApplication application = makeJmeApplication();
-        JmeToJFXIntegrator.startAndBind(application, view3d, Thread::new);
+        primStage.setOnCloseRequest(event -> System.exit(0));
+        JmeToJfxApplication application = makeJmeApplication();
+        JmeToJfxIntegrator.startAndBind(application, view3d, Thread::new, FrameTransferSceneProcessor.TransferMode.UNBUFFERED);
         root.getChildren().add(view3d);
     }
 
-    private static JmeToJFXApplication makeJmeApplication() {
+    private static JmeToJfxApplication makeJmeApplication() {
 
         AppSettings set = new AppSettings(true);
         set.setResolution(640,640);
-        set.setGraphicsDebug(false);
-        set.setFrameRate(60);
         set.setVSync(false);
+        set.setGraphicsDebug(false);
         set.setResizable(false);
         set.setAudioRenderer(null);
-        JmeToJFXIntegrator.prepareSettings(set, 60);
-        JmeToJFXApplication application = new JmeToJFXApplication() {
+        JmeToJfxIntegrator.prepareSettings(set);
+        JmeToJfxApplication application = new JmeToJfxApplication() {
 
             private com.jme3.scene.Node teaNode;
             private Spatial teaGeom;
