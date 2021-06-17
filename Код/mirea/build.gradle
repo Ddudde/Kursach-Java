@@ -1,58 +1,46 @@
-
-buildscript {
-	repositories {
-		maven { url 'https://plugins.gradle.org/m2/' }
-	}
-	dependencies {
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-		classpath 'net.ltgt.gradle:gradle-apt-plugin:0.21'
-	}
-}
-
 plugins {
-	id 'org.springframework.boot' version '2.4.6'
+	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
-	id 'application'
 	id 'org.openjfx.javafxplugin' version '0.0.5'
+	id 'edu.sc.seis.launch4j' version '2.4.6'
+	id 'java'
 }
 
-apply plugin: 'com.jfrog.bintray'
-
-ext {
-	jmonkeyengine_version = '[3.1,)'
-	lombokVersion = '1.18.6'
-	jetbrainsAnnotation = "18.0.0"
-}
-
-group = 'ru'
-version = '0.0.1-SNAPSHOT'
+group = 'ru.mirea'
+version = '0.9'
 sourceCompatibility = 11
-mainClassName = 'ru.mirea.MireaApplication'
 
 repositories {
 	mavenCentral()
-	mavenLocal()
 	jcenter()
-	maven {
-		url  "https://dl.bintray.com/javasabr/maven"
-	}
 }
 
 dependencies {
-	implementation files('lib/jme-jfx-1.5.2.jar', 'lib/rlib-6.1.2.jar')
-	implementation 'org.springframework.boot:spring-boot-starter'
-	compile "org.jmonkeyengine:jme3-core:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-plugins:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-effects:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-networking:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-blender:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-bullet:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-bullet-native:$jmonkeyengine_version"
-	compile "org.jmonkeyengine:jme3-niftygui:$jmonkeyengine_version"
-	implementation 'com.jayfella:jme-jfx-11:1.1.5'
-	compile "org.projectlombok:lombok:$lombokVersion"
-	compile "org.jetbrains:annotations:$jetbrainsAnnotation"
+	compile files('lib/jme-jfx-1.5.2.jar', 'lib/rlib-6.1.2.jar')
+	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
+	compile 'org.lwjgl:lwjgl'
+	compile 'com.jayfella:jme-jfx-11:1.1.5'
+	compile 'org.jetbrains:annotations:18.0.0'
+	compile 'org.springframework.boot:spring-boot-starter'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'ru.mirea.MireaApplication'
+	}
+	archivesBaseName = 'Comps'
+	enabled = true
+}
+
+launch4j {
+	headerType = "gui"
+	mainClassName = "ru.mirea.MireaApplication"
+	outfile = "Comps.exe"
+	jar = '../libs/Comps-0.9.jar'
 }
 
 javafx {

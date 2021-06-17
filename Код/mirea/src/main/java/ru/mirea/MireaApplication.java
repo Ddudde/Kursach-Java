@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MireaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MireaApplication.class, args);
+		SpringApplication.run(MireaApplication.class);
 		Application.launch(Start.class);
 	}
 

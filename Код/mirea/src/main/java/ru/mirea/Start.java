@@ -12,30 +12,26 @@ import com.jme3.scene.CameraNode;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.CameraControl;
 import com.jme3.system.AppSettings;
-import com.jme3.system.JmeSystem;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 import com.jme3x.jfx.injfx.JmeToJFXApplication;
 import com.jme3x.jfx.injfx.JmeToJFXIntegrator;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Start extends Application {
 
     private StackPane root;
@@ -55,8 +51,8 @@ public class Start extends Application {
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
         show_start();
-        //close_start();
-        //show_project();
+        close_start();
+        show_project();
     }
 
     public void show_start() throws IOException {
@@ -80,6 +76,7 @@ public class Start extends Application {
 
     public void show_project() throws IOException {
         FXMLLoader loader = new FXMLLoader();
+
         URL xmlUrl = getClass().getResource("/fxml/project.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
@@ -89,23 +86,23 @@ public class Start extends Application {
         roots = loader.getNamespace();
         for(Node n : root.getChildrenUnmodifiable())
             n.requestFocus();
-        Canvas canvas = new Canvas();
-        root.getChildren().add(canvas);
-        canvas.setOnMouseClicked(event -> canvas.requestFocus());
-        canvas.setWidth(640);
-        canvas.setHeight(640);
+        ImageView view3d = new ImageView();
+        view3d.setFitWidth(640);
+        view3d.setFitHeight(640);
         JmeToJFXApplication application = makeJmeApplication();
-        JmeToJFXIntegrator.startAndBind(application, canvas, Thread::new);
-
+        JmeToJFXIntegrator.startAndBind(application, view3d, Thread::new);
+        root.getChildren().add(view3d);
     }
 
     private static JmeToJFXApplication makeJmeApplication() {
 
         AppSettings set = new AppSettings(true);
-        set.setResizable(false);
+        set.setResolution(640,640);
         set.setGraphicsDebug(false);
+        set.setFrameRate(60);
         set.setVSync(false);
-        set.setSamples(0);
+        set.setResizable(false);
+        set.setAudioRenderer(null);
         JmeToJFXIntegrator.prepareSettings(set, 60);
         JmeToJFXApplication application = new JmeToJFXApplication() {
 
