@@ -17,8 +17,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -42,7 +44,7 @@ public class Start extends Application {
 
     private Scene scene;
 
-    private Stage primStage;
+    public static Stage primStage;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -51,8 +53,8 @@ public class Start extends Application {
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
         show_start();
-        close_start();
-        show_project();
+        //close_start();
+        //show_project();
     }
 
     public void show_start() throws IOException {
@@ -60,13 +62,14 @@ public class Start extends Application {
         URL xmlUrl = getClass().getResource("/fxml/start.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
-        scene = new Scene(root,1280,720);
+        scene = new Scene(root,1280,720, true, SceneAntialiasing.DISABLED);
         primStage.setScene(scene);
         primStage.show();
         roots = loader.getNamespace();
         for(Node n : root.getChildrenUnmodifiable())
             n.requestFocus();
         init_sc();
+        ((StartController)loader.getController()).init();
     }
 
     public void close_start()

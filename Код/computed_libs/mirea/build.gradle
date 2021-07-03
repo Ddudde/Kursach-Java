@@ -1,47 +1,41 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.5'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'edu.sc.seis.launch4j' version '2.4.6'
+	id "io.freefair.lombok" version "5.3.0"
 	id 'java'
 }
 
-group = 'ru.mirea'
-version = '0.9'
+group = 'com'
+version = '1.0'
 sourceCompatibility = 11
 
 repositories {
 	mavenCentral()
 	jcenter()
-	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-	compile files('lib/Rlib&jME-javaFX-1.0.jar')
 	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
-	compile 'org.jetbrains:annotations:18.0.0'
-	compile 'org.springframework.boot:spring-boot-starter'
 	compile 'org.openjfx:javafx-base:13:win'
 	compile 'org.openjfx:javafx-controls:13:win'
 	compile 'org.openjfx:javafx-graphics:13:win'
 	compile 'org.openjfx:javafx-fxml:13:win'
 	compile 'org.openjfx:javafx-media:13:win'
+	compile 'org.lwjgl:lwjgl'
+	compile 'org.jetbrains:annotations:18.0.0'
+	compile 'org.slf4j:slf4j-log4j12:1.7.29'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
 jar {
-	manifest {
-		attributes 'Main-Class': 'ru.mirea.MireaApplication'
-	}
-	archivesBaseName = 'Comps'
+	archivesBaseName = 'Rlib&jME-javaFX'
 	enabled = true
 }
 
 launch4j {
-	headerType = "gui"
-	mainClassName = "ru.mirea.MireaApplication"
-	outfile = "Comps.exe"
-	jar = '../libs/Comps-0.9.jar'
+	headerType = "console"
+	outfile = "Rlib&jME-javaFX.exe"
+	jar = '../libs/Rlib&jME-javaFX-1.0.jar'
 }
