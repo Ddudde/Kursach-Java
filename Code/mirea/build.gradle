@@ -1,5 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '1.5.10.RELEASE'
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version "1.0.11.RELEASE"
+	id 'war'
 	id 'java'
 }
 
@@ -49,10 +51,10 @@ task build_exe(type: Exec) {
 }
 
 task runnn {
-	dependsOn(bootRepackage)
+	dependsOn(bootWar)
 }
 
 task runnn_exe {
-	dependsOn(bootRepackage)
+	dependsOn(bootWar)
 	dependsOn(build_exe)
 }
