@@ -13,8 +13,6 @@ import java.util.Deque;
 import java.util.function.*;
 
 /**
- * Интерфей с для реализации связанного списка. Главное преймущество, это переиспользование узлов списка и быстрая
- * итерация с уменьшением нагрузки на GC. Создаются с помощью {@link LinkedListFactory}.
  * <pre>
  * for(Node&lt;E&gt; node = getFirstNode(); node != null; node = node.getNext()) {
  * 	? item = node.getItem();

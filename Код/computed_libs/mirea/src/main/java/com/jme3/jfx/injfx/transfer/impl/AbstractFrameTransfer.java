@@ -135,8 +135,8 @@ public abstract class AbstractFrameTransfer<T> implements FrameTransfer {
             this.frameBuffer = frameBuffer;
         } else {
             this.frameBuffer = new FrameBuffer(width, height, 1);
-            this.frameBuffer.setDepthBuffer(Image.Format.Depth);
-            this.frameBuffer.setColorBuffer(Image.Format.BGRA8);
+            this.frameBuffer.setDepthTarget(FrameBuffer.FrameBufferTarget.newTarget(Image.Format.Depth));
+            this.frameBuffer.addColorTarget(FrameBuffer.FrameBufferTarget.newTarget(Image.Format.RGBA8));
             this.frameBuffer.setSrgb(true);
         }
 
@@ -155,7 +155,7 @@ public abstract class AbstractFrameTransfer<T> implements FrameTransfer {
             pixelBufferObjects[1] = createPixelBuffer(dataSize);
         }
 
-        JfxPlatform.runInFxThread(() -> setImage());
+        JfxPlatform.runInFxThread(this::setImage);
     }
 
     private IntBuffer createPixelBuffer(int dataSize) {

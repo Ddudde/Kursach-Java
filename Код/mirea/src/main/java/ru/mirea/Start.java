@@ -54,8 +54,8 @@ public class Start extends Application {
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
         show_start();
-        //close_start();
-        //show_project();
+        close_start();
+        show_project();
     }
 
     public void show_start() throws IOException {
@@ -84,15 +84,15 @@ public class Start extends Application {
         URL xmlUrl = getClass().getResource("/fxml/project.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
-        scene = new Scene(root,1280,720);
+        scene = new Scene(root,1280,720, true, SceneAntialiasing.DISABLED);
         primStage.setScene(scene);
         primStage.show();
         roots = loader.getNamespace();
         for(Node n : root.getChildrenUnmodifiable())
             n.requestFocus();
         ImageView view3d = new ImageView();
-        view3d.setFitWidth(640);
-        view3d.setFitHeight(640);
+        view3d.setFitWidth(512);
+        view3d.setFitHeight(512);
         primStage.setOnCloseRequest(event -> System.exit(0));
         JmeToJfxApplication application = makeJmeApplication();
         JmeToJfxIntegrator.startAndBind(application, view3d, Thread::new, FrameTransferSceneProcessor.TransferMode.UNBUFFERED);
@@ -102,9 +102,11 @@ public class Start extends Application {
     private static JmeToJfxApplication makeJmeApplication() {
 
         AppSettings set = new AppSettings(true);
-        set.setResolution(640,640);
+        set.setResolution(512,512);
         set.setVSync(false);
         set.setGraphicsDebug(false);
+        set.setFrameRate(70);
+        set.setFrequency(60);
         set.setResizable(false);
         set.setAudioRenderer(null);
         JmeToJfxIntegrator.prepareSettings(set);
@@ -160,8 +162,8 @@ public class Start extends Application {
             };
         };
 
-        application.setSettings(set);
         application.setShowSettings(false);
+        application.setSettings(set);
 
         return application;
     }

@@ -529,11 +529,11 @@ public abstract class AbstractFrameTransferSceneProcessor<T extends Node> implem
                 .filter(sceneProcessor -> !(sceneProcessor instanceof FrameTransferSceneProcessor))
                 .findAny();
 
-        if (!any.isPresent()) {
+        if (any.isEmpty()) {
 
             var frameBuffer = new FrameBuffer(width, height, 1);
-            frameBuffer.setDepthBuffer(Image.Format.Depth);
-            frameBuffer.setColorBuffer(Image.Format.RGBA8);
+            frameBuffer.setDepthTarget(FrameBuffer.FrameBufferTarget.newTarget(Image.Format.Depth));
+            frameBuffer.addColorTarget(FrameBuffer.FrameBufferTarget.newTarget(Image.Format.RGBA8));
             frameBuffer.setSrgb(true);
 
             viewPort.setOutputFrameBuffer(frameBuffer);
