@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>F:\Rep\Kursach-Java\Code\mirea\build\libs\Comps-0.9.jar</jar>
+  <outfile>F:\Rep\Kursach-Java\Code\mirea\exe\Comps.exe</outfile>
+  <errTitle>У вас нет JRE. Но ничего страшного. Я знаю точную сборку JRE, который осилит запуск моей программы:)</errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>https://github.com/ojdkbuild/ojdkbuild/releases/tag/java-11-openjdk-11.0.11.9-1</downloadUrl>
+  <supportUrl>url</supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>F:\Rep\Kursach-Java\Code\mirea\src\main\resources\img\icon.ico</icon>
+  <jre>
+    <path>C:\Program Files\ojdkbuild\java-11-openjdk-jre-11.0.11-1\bin\javaw.exe</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>11.0.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+</launch4jConfig>

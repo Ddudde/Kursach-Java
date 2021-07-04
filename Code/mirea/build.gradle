@@ -1,0 +1,58 @@
+plugins {
+	id 'org.springframework.boot' version '1.5.10.RELEASE'
+	id 'java'
+}
+
+group = 'ru.mirea'
+version = '0.9'
+sourceCompatibility = 11
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	compile files('lib/Rlib&jME-javaFX-1.0.jar')
+	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-plugins:3.4.0-stable'
+	compile 'org.jetbrains:annotations:18.0.0'
+	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'org.openjfx:javafx-base:13:win'
+	compile 'org.openjfx:javafx-controls:13:win'
+	compile 'org.openjfx:javafx-graphics:13:win'
+	compile 'org.openjfx:javafx-fxml:13:win'
+	compile 'org.openjfx:javafx-media:13:win'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+jar {
+	archivesBaseName = 'Comps'
+	enabled = true
+	manifest {
+		attributes 'Main-Class': 'ru.mirea.MireaApplication'
+	}
+	from {
+		configurations.runtime.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+}
+
+task build_exe(type: Exec) {
+	workingDir 'F:\\Rep\\Kursach-Java\\Code\\mirea'
+	commandLine "launch4jc.exe", "exec.xml"
+}
+
+task runnn {
+	dependsOn(bootRepackage)
+}
+
+task runnn_exe {
+	dependsOn(bootRepackage)
+	dependsOn(build_exe)
+}
