@@ -15,6 +15,7 @@ import com.jme3.scene.control.CameraControl;
 import com.jme3.system.AppSettings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
@@ -175,7 +176,7 @@ public class Start extends Application {
         MediaPlayer player = new MediaPlayer( new Media(getClass().getResource("/video/background.mp4").toExternalForm()));
         medWiu = (MediaView) roots.get("medWiu");
         medWiu.setMediaPlayer(player);
-        player.setAutoPlay(true);
         player.setCycleCount(MediaPlayer.INDEFINITE);
+        player.play();
     }
 }

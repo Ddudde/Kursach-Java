@@ -16,15 +16,15 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1440.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.StartController">
+<StackPane cache="true" cacheHint="SPEED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1440.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.StartController">
    <children>
-      <ScrollPane fx:id="scrpan" fitToWidth="true" prefHeight="1440.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+      <ScrollPane fx:id="scrpan" cache="true" cacheHint="SPEED" fitToWidth="true" prefHeight="1440.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
          <content>
-            <StackPane alignment="TOP_CENTER" prefHeight="1440.0" prefWidth="1265.0" style="-fx-background-color: #242424;">
+            <StackPane alignment="TOP_CENTER" cache="true" cacheHint="SPEED" prefHeight="1440.0" prefWidth="1265.0" style="-fx-background-color: #242424;">
                <children>
-                  <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
+                  <Pane cache="true" cacheHint="SPEED" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
                      <children>
-                        <MediaView fx:id="medWiu" depthTest="DISABLE" fitHeight="720.0" fitWidth="1265.0" preserveRatio="false" smooth="false">
+                        <MediaView fx:id="medWiu" cache="true" cacheHint="SPEED" fitHeight="720.0" fitWidth="1265.0" pickOnBounds="true" preserveRatio="false" smooth="false">
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor></MediaView>
@@ -33,7 +33,7 @@
                               <Font name="Times New Roman Bold" size="36.0" />
                            </font>
                         </Label>
-                        <ImageView accessibleRole="BUTTON" depthTest="DISABLE" fitHeight="128.0" fitWidth="63.0" layoutX="601.0" layoutY="464.0" onMouseClicked="#down" pickOnBounds="true" smooth="false" visible="false">
+                        <ImageView accessibleRole="BUTTON" cache="true" cacheHint="SPEED" depthTest="DISABLE" fitHeight="128.0" fitWidth="63.0" layoutX="601.0" layoutY="464.0" onMouseClicked="#down" pickOnBounds="true" smooth="false">
                            <image>
                               <Image url="@../img/start.gif" />
                            </image>

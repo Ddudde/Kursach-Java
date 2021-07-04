@@ -1,11 +1,15 @@
 package ru.mirea;
 
+import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;
@@ -53,7 +57,7 @@ public class StartController {
     @FXML
     private Pane r_caps;
 
-    private boolean caps = false;
+    private boolean caps_lock = false;
 
     private boolean login = true;
 
@@ -61,9 +65,17 @@ public class StartController {
     
     private final ArrayList<String> list_null = new ArrayList<>();
 
+    private RotateTransition rt_a;
+
+    private RotateTransition rt_r;
+
     public void init() {
-        caps = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
+        caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
+        rt_a = new RotateTransition(Duration.millis(1000), auth);
+        rt_r = new RotateTransition(Duration.millis(1000), reg);
+        rt_a.setAxis(Rotate.X_AXIS);
+        rt_r.setAxis(Rotate.X_AXIS);
         auth.getScene().addEventHandler(KeyEvent.KEY_RELEASED, this::caps);
     }
 
@@ -75,7 +87,8 @@ public class StartController {
     public void toreg()
     {
         login = false;
-        setvis();
+        reg.setVisible(true);
+        rotate_this(rt_a, rt_r);
         destr_auth();
         erpat.setVisible(false);
         ernull.setVisible(false);
@@ -84,10 +97,28 @@ public class StartController {
     public void toauth()
     {
         login = true;
-        setvis();
+        auth.setVisible(true);
+        rotate_this(rt_r, rt_a);
         destr_reg();
         erpat.setVisible(false);
         ernull.setVisible(false);
+    }
+
+    private void rotate_this(RotateTransition rt1, RotateTransition rt2)
+    {
+        rt1.setByAngle(0);
+        rt1.setToAngle(90);
+        rt2.setByAngle(270);
+        rt2.setToAngle(360);
+        rt1.play();
+        rt2.play();
+        rt2.onFinishedProperty().setValue(this::chvis);
+    }
+
+    private void chvis(ActionEvent actionEvent) {
+        RotateTransition rt = (RotateTransition) actionEvent.getSource();
+        rt.onFinishedProperty().setValue(null);
+        setvis();
     }
 
     private void destr_auth()
@@ -137,15 +168,15 @@ public class StartController {
     public void caps(KeyEvent keyEvent)
     {
         if(keyEvent.getCode() == KeyCode.CAPS) {
-            caps = !caps;
+            caps_lock = !caps_lock;
             set_caps();
         }
     }
 
     private void set_caps()
     {
-        r_caps.setVisible(caps);
-        l_caps.setVisible(caps);
+        r_caps.setVisible(caps_lock);
+        l_caps.setVisible(caps_lock);
     }
 
     public void down()
