@@ -32,26 +32,14 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
-jar {
-	archivesBaseName = 'Comps'
-	enabled = true
-	manifest {
-		attributes 'Main-Class': 'ru.mirea.MireaApplication'
-	}
-	from {
-		configurations.runtime.collect {
-			it.isDirectory() ? it : zipTree(it)
-		}
-	}
-}
-
 task build_exe(type: Exec) {
 	workingDir 'F:\\Rep\\Kursach-Java\\Code\\mirea'
 	commandLine "launch4jc.exe", "exec.xml"
 }
 
-task runnn {
-	dependsOn(bootWar)
+bootWar {
+	baseName = "Comps"
+	mainClassName = "ru.mirea.MireaApplication"
 }
 
 task runnn_exe {

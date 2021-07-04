@@ -15,6 +15,7 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.control.CameraControl;
 import com.jme3.system.AppSettings;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
@@ -23,6 +24,7 @@ import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -40,13 +42,15 @@ import javax.naming.directory.DirContext;
 @Slf4j
 public class Start extends Application {
 
-    private StackPane root;
+    private static Pane root;
 
-    private MediaView medWiu;
+    private static MediaView medWiu;
 
-    private Map<String, Object> roots;
+    private static Map<String, Object> roots;
 
-    private Scene scene;
+    private static Scene scene;
+
+    private static FXMLLoader loader;
 
     public static Stage primStage;
 
@@ -62,18 +66,35 @@ public class Start extends Application {
     }
 
     public void show_start() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader();
         URL xmlUrl = getClass().getResource("/fxml/start.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
+        roots = loader.getNamespace();
         scene = new Scene(root,1280,720, true, SceneAntialiasing.DISABLED);
         primStage.setScene(scene);
         primStage.show();
-        roots = loader.getNamespace();
-        for(Node n : root.getChildrenUnmodifiable())
-            n.requestFocus();
-        init_sc();
+        start_spring();
+    }
+
+    public void start_spring()
+    {
+        new StartSpring(new SetCtx(this)).start();
+    }
+
+    public void starts()
+    {
+        Platform.runLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                for(Node n : Start.root.getChildrenUnmodifiable())
+                    n.requestFocus();
+            }
+        });
         ((StartController)loader.getController()).init();
+        start_vid();
     }
 
     public void close_start()
@@ -82,7 +103,7 @@ public class Start extends Application {
     }
 
     public void show_project() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader();
 
         URL xmlUrl = getClass().getResource("/fxml/project.fxml");
         loader.setLocation(xmlUrl);
@@ -174,14 +195,9 @@ public class Start extends Application {
         return application;
     }
 
-    public void init_sc()
+    public static void start_vid()
     {
-        start_vid();
-    }
-
-    public void start_vid()
-    {
-        MediaPlayer player = new MediaPlayer( new Media(getClass().getResource("/video/background.mp4").toExternalForm()));
+        MediaPlayer player = new MediaPlayer( new Media(Start.class.getResource("/video/background.mp4").toExternalForm()));
         medWiu = (MediaView) roots.get("medWiu");
         medWiu.setMediaPlayer(player);
         player.setCycleCount(MediaPlayer.INDEFINITE);

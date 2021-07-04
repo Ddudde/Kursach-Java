@@ -1,13 +1,16 @@
 package ru.mirea;
 
 import javafx.animation.RotateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -35,6 +38,12 @@ public class StartController {
 
     @FXML
     private Pane reg;
+
+    @FXML
+    private Pane zagr;
+
+    @FXML
+    private StackPane prilozh;
 
     @FXML
     private TextField a_log;
@@ -70,6 +79,8 @@ public class StartController {
     private RotateTransition rt_r;
 
     public void init() {
+        zagr.setVisible(false);
+        prilozh.setVisible(true);
         caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
         rt_a = new RotateTransition(Duration.millis(1000), auth);
