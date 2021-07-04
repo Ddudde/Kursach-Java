@@ -11,9 +11,6 @@ import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.texture.FrameBuffer;
 import com.jme3.texture.Image;
-import com.ss.rlib.logger.api.Logger;
-import com.ss.rlib.logger.api.LoggerLevel;
-import com.ss.rlib.logger.api.LoggerManager;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
@@ -31,7 +28,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SuppressWarnings("WeakerAccess")
 public abstract class AbstractFrameTransferSceneProcessor<T extends Node> implements FrameTransferSceneProcessor {
 
-    protected static final Logger LOGGER = LoggerManager.getLogger(JfxPlatform.class);
+    //protected static final Logger LOGGER = null;
 
     /**
      * The width listener.
@@ -253,7 +250,7 @@ public abstract class AbstractFrameTransferSceneProcessor<T extends Node> implem
         askFixAspect = fixAspect;
         reshapeNeeded.set(2);
 
-        LOGGER.debug(this, processor -> "notify resized to " + processor.askWidth + "x" + processor.askHeight);
+        //LOGGER.debug(this, processor -> "notify resized to " + processor.askWidth + "x" + processor.askHeight);
     }
 
     @Override
@@ -464,9 +461,9 @@ public abstract class AbstractFrameTransferSceneProcessor<T extends Node> implem
      */
     protected @NotNull FrameTransfer reshapeInThread(int width, int height, boolean fixAspect) {
 
-        if (LOGGER.isEnabled(LoggerLevel.DEBUG)) {
-            LOGGER.debug("Reshape in the jME thread to " + width + "x" + height);
-        }
+        //if (LOGGER.isEnabled(LoggerLevel.DEBUG)) {
+            //LOGGER.debug("Reshape in the jME thread to " + width + "x" + height);
+        //}
 
         reshapeCurrentViewPort(width, height);
 
@@ -506,9 +503,9 @@ public abstract class AbstractFrameTransferSceneProcessor<T extends Node> implem
      */
     protected void reshapeCurrentViewPort(int width, int height) {
 
-        if (LOGGER.isEnabled(LoggerLevel.DEBUG)) {
-            LOGGER.debug("reshape the current view port to " + width + "x" + height);
-        }
+        //if (LOGGER.isEnabled(LoggerLevel.DEBUG)) {
+            //LOGGER.debug("reshape the current view port to " + width + "x" + height);
+        //}
 
         var viewPort = getViewPort();
         var camera = viewPort.getCamera();

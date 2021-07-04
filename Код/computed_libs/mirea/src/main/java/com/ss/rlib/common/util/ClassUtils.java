@@ -149,8 +149,8 @@ public final class ClassUtils {
      */
     public static <T> @NotNull T newInstance(@NotNull Class<?> cs) {
         try {
-            return unsafeNNCast(cs.newInstance());
-        } catch (InstantiationException | IllegalAccessException e) {
+            return unsafeNNCast(cs.getDeclaredConstructor().newInstance());
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -182,8 +182,8 @@ public final class ClassUtils {
      */
     public static <T> @NotNull T newInstance(@NotNull String className) {
         try {
-            return unsafeNNCast(forName(className).newInstance());
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            return unsafeNNCast(forName(className).getDeclaredConstructor().newInstance());
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }

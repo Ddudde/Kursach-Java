@@ -20,6 +20,7 @@ dependencies {
 	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
 	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
+	compile 'org.jmonkeyengine:jme3-plugins:3.4.0-stable'
 	compile 'org.jetbrains:annotations:18.0.0'
 	compile 'org.springframework.boot:spring-boot-starter'
 	compile 'org.openjfx:javafx-base:13:win'

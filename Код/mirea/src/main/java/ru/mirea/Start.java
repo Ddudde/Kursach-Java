@@ -7,6 +7,7 @@ import com.jme3.input.controls.MouseAxisTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.jfx.injfx.processor.FrameTransferSceneProcessor;
 import com.jme3.light.AmbientLight;
+import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.CameraNode;
@@ -33,6 +34,8 @@ import java.util.Map;
 import com.jme3.jfx.injfx.JmeToJfxApplication;
 import com.jme3.jfx.injfx.JmeToJfxIntegrator;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.naming.directory.DirContext;
 
 @Slf4j
 public class Start extends Application {
@@ -107,6 +110,7 @@ public class Start extends Application {
         set.setGraphicsDebug(false);
         set.setFrameRate(70);
         set.setFrequency(60);
+        set.setGammaCorrection(false);
         set.setResizable(false);
         set.setAudioRenderer(null);
         JmeToJfxIntegrator.prepareSettings(set);
@@ -123,9 +127,11 @@ public class Start extends Application {
                 teaGeom = assetManager.loadModel("models/CPU/CPU.j3o");
                 teaNode = new com.jme3.scene.Node("teaNode");
                 teaNode.attachChild(teaGeom);
+                //renderer.setMainFrameBufferSrgb(true);
+                //renderer.setLinearizeSrgbImages(true);
                 rootNode.attachChild(teaNode);
                 teaGeom.rotate(0, 0, 0);
-                teaGeom.addLight(new AmbientLight(ColorRGBA.White));
+                rootNode.addLight(new AmbientLight(ColorRGBA.fromRGBA255(235,233,188, 0)));
                 CameraNode camNode = new CameraNode("Camera Node", cam);
                 camNode.setControlDir(CameraControl.ControlDirection.SpatialToCamera);
                 teaNode.attachChild(camNode);
