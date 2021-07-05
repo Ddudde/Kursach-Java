@@ -7,7 +7,6 @@ import com.jme3.input.controls.MouseAxisTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.jfx.injfx.processor.FrameTransferSceneProcessor;
 import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.CameraNode;
@@ -17,15 +16,12 @@ import com.jme3.system.AppSettings;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -36,13 +32,12 @@ import java.util.Map;
 import com.jme3.jfx.injfx.JmeToJfxApplication;
 import com.jme3.jfx.injfx.JmeToJfxIntegrator;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.naming.directory.DirContext;
+import ru.mirea.Controllers.StartController;
 
 @Slf4j
 public class Start extends Application {
 
-    private static Pane root;
+    public static Pane root;
 
     private static MediaView medWiu;
 
@@ -53,6 +48,8 @@ public class Start extends Application {
     private static FXMLLoader loader;
 
     public static Stage primStage;
+
+    public static String usename;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -84,28 +81,19 @@ public class Start extends Application {
 
     public void starts()
     {
-        Platform.runLater(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                for(Node n : Start.root.getChildrenUnmodifiable())
-                    n.requestFocus();
-            }
-        });
         ((StartController)loader.getController()).init();
         start_vid();
     }
 
-    public void close_start()
+    public static void close_start()
     {
         primStage.close();
     }
 
-    public void show_project() throws IOException {
+    public static void show_project() throws IOException {
         loader = new FXMLLoader();
 
-        URL xmlUrl = getClass().getResource("/fxml/project.fxml");
+        URL xmlUrl = Start.class.getResource("/fxml/project.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
         scene = new Scene(root,1280,720, true, SceneAntialiasing.DISABLED);

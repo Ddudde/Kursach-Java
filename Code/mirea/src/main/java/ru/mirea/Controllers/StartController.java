@@ -1,18 +1,26 @@
-package ru.mirea;
+package ru.mirea.Controllers;
 
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+import ru.mirea.MireaApplication;
+import ru.mirea.Start;
+import ru.mirea.data.User;
+import ru.mirea.data.UsersImpl;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;
@@ -31,6 +39,9 @@ public class StartController {
     private Pane erpat;
 
     @FXML
+    private Pane nevlog;
+
+    @FXML
     private Pane ernull;
 
     @FXML
@@ -43,22 +54,34 @@ public class StartController {
     private Pane zagr;
 
     @FXML
+    private Pane logzan;
+
+    @FXML
+    private Pane povpar;
+
+    @FXML
+    private Pane gen;
+
+    @FXML
+    private Label sgerpar;
+
+    @FXML
     private StackPane prilozh;
 
     @FXML
     private TextField a_log;
 
     @FXML
-    private TextField a_par;
+    private PasswordField a_par;
 
     @FXML
     private TextField r_log;
 
     @FXML
-    private TextField r_par;
+    private PasswordField r_par;
 
     @FXML
-    private TextField r_conf_par;
+    private PasswordField r_conf_par;
 
     @FXML
     private Pane l_caps;
@@ -78,9 +101,25 @@ public class StartController {
 
     private RotateTransition rt_r;
 
+    private UsersImpl usersImpl;
+
+    private int ico = 0;
+
     public void init() {
         zagr.setVisible(false);
         prilozh.setVisible(true);
+        Platform.runLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                for(Node n : Start.root.getChildrenUnmodifiable())
+                    n.requestFocus();
+            }
+        });
+        down();
+        up();
+        usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
         caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
         rt_a = new RotateTransition(Duration.millis(1000), auth);
@@ -113,6 +152,93 @@ public class StartController {
         destr_reg();
         erpat.setVisible(false);
         ernull.setVisible(false);
+        gen.setVisible(false);
+    }
+
+    public void onreg()
+    {
+        if(getstat(r_log) && getstat(r_par) && getstat(r_conf_par))
+        {
+            if(usersImpl.getuser(r_log.getText()) != null)
+            {
+                logzan.setVisible(true);
+                return;
+            }
+            logzan.setVisible(false);
+            if(!r_par.getText().equals(r_conf_par.getText()))
+            {
+                povpar.setVisible(true);
+                return;
+            }
+            povpar.setVisible(false);
+            User user = new User();
+            user.setUsername(r_log.getText());
+            user.setPassword(r_par.getText());
+            user.setIcons(ico);
+            usersImpl.add(user);
+            toauth();
+        }
+    }
+
+    public void ranpar()
+    {
+        String password = "";
+        String symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (int i = 0; i < 15; i++){
+            password += symbols.charAt((int)Math.floor(Math.random() * symbols.length()));
+        }
+        r_par.setText(password);
+        r_conf_par.setText(password);
+        sgerpar.setText(password);
+        gen.setVisible(true);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(password);
+        clipboard.setContent(content);
+    }
+
+    public void rad1()
+    {
+        ico = 0;
+    }
+
+    public void rad2()
+    {
+        ico = 1;
+    }
+
+    public void rad3()
+    {
+        ico = 2;
+    }
+
+    public void onauth() throws IOException {
+        if(getstat(a_log) && getstat(a_par))
+        {
+            boolean chek = usersImpl.checkpar(a_log.getText(), a_par.getText());
+            if(!chek)
+            {
+                nevlog.setVisible(true);
+            }else{
+                Start.usename = a_log.getText();
+                Start.close_start();
+                Start.show_project();
+            }
+        }
+    }
+
+    private boolean getstat(TextField text)
+    {
+        if(!list_null.contains(text.getId()) && !list_nonlat.contains(text.getId()))
+        {
+            if(text.getText().isEmpty()) {
+                if (!list_null.contains(text.getId())) list_null.add(text.getId());
+                ernull.setVisible(!list_null.isEmpty());
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     private void rotate_this(RotateTransition rt1, RotateTransition rt2)
