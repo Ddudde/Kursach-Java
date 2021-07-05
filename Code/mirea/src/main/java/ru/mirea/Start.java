@@ -5,7 +5,9 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.MouseAxisTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
+import com.jme3.jfx.injfx.ApplicationThreadExecutor;
 import com.jme3.jfx.injfx.processor.FrameTransferSceneProcessor;
+import com.jme3.jfx.injfx.processor.ImageViewFrameTransferSceneProcessor;
 import com.jme3.light.AmbientLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -29,9 +31,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
+import java.util.function.Function;
+
 import com.jme3.jfx.injfx.JmeToJfxApplication;
 import com.jme3.jfx.injfx.JmeToJfxIntegrator;
 import lombok.extern.slf4j.Slf4j;
+import ru.mirea.Controllers.ProjController;
 import ru.mirea.Controllers.StartController;
 
 @Slf4j
@@ -41,7 +46,7 @@ public class Start extends Application {
 
     private static MediaView medWiu;
 
-    private static Map<String, Object> roots;
+    public static Map<String, Object> roots;
 
     private static Scene scene;
 
@@ -100,15 +105,11 @@ public class Start extends Application {
         primStage.setScene(scene);
         primStage.show();
         roots = loader.getNamespace();
-        for(Node n : root.getChildrenUnmodifiable())
-            n.requestFocus();
-        ImageView view3d = new ImageView();
-        view3d.setFitWidth(512);
-        view3d.setFitHeight(512);
+        ImageView view3d = (ImageView) roots.get("proc");
         primStage.setOnCloseRequest(event -> System.exit(0));
         JmeToJfxApplication application = makeJmeApplication();
         JmeToJfxIntegrator.startAndBind(application, view3d, Thread::new, FrameTransferSceneProcessor.TransferMode.UNBUFFERED);
-        root.getChildren().add(view3d);
+        ((ProjController)loader.getController()).init();
     }
 
     private static JmeToJfxApplication makeJmeApplication() {
@@ -125,27 +126,27 @@ public class Start extends Application {
         JmeToJfxIntegrator.prepareSettings(set);
         JmeToJfxApplication application = new JmeToJfxApplication() {
 
-            private com.jme3.scene.Node teaNode;
-            private Spatial teaGeom;
+            private com.jme3.scene.Node nNode;
+            private Spatial nGeom;
             private boolean rotate = false;
 
             @Override
             public void simpleInitApp() {
                 super.simpleInitApp();
                 setDisplayStatView(false);
-                teaGeom = assetManager.loadModel("models/CPU/CPU.j3o");
-                teaNode = new com.jme3.scene.Node("teaNode");
-                teaNode.attachChild(teaGeom);
+                nGeom = assetManager.loadModel("models/CPU/CPU.j3o");
+                nNode = new com.jme3.scene.Node("teaNode");
+                nNode.attachChild(nGeom);
                 //renderer.setMainFrameBufferSrgb(true);
                 //renderer.setLinearizeSrgbImages(true);
-                rootNode.attachChild(teaNode);
-                teaGeom.rotate(0, 0, 0);
+                rootNode.attachChild(nNode);
+                nGeom.rotate(0, 0, 0);
                 rootNode.addLight(new AmbientLight(ColorRGBA.fromRGBA255(235,233,188, 0)));
                 CameraNode camNode = new CameraNode("Camera Node", cam);
                 camNode.setControlDir(CameraControl.ControlDirection.SpatialToCamera);
-                teaNode.attachChild(camNode);
+                nNode.attachChild(camNode);
                 camNode.setLocalTranslation(new Vector3f(0, 100, 0));
-                camNode.lookAt(teaNode.getLocalTranslation(), Vector3f.UNIT_Y);
+                camNode.lookAt(nNode.getLocalTranslation(), Vector3f.UNIT_Y);
                 flyCam.setEnabled(false);
                 registerInput();
             }
@@ -169,10 +170,10 @@ public class Start extends Application {
             /** Use this listener for continuous events */
             private AnalogListener analogListener = new AnalogListener() {
                 public void onAnalog(String name, float value, float tpf) {
-                    if (name.equals("rotateRightX") && rotate) teaGeom.rotate(0, 5 * tpf, 0);
-                    if (name.equals("rotateLeftX") && rotate) teaGeom.rotate(0, -5 * tpf, 0);
-                    if (name.equals("rotateRightY") && rotate) teaGeom.rotate(5 * tpf, 0, 0);
-                    if (name.equals("rotateLeftY") && rotate) teaGeom.rotate(-5 * tpf, 0, 0);
+                    if (name.equals("rotateRightX") && rotate) nGeom.rotate(0, 5 * tpf, 0);
+                    if (name.equals("rotateLeftX") && rotate) nGeom.rotate(0, -5 * tpf, 0);
+                    if (name.equals("rotateRightY") && rotate) nGeom.rotate(5 * tpf, 0, 0);
+                    if (name.equals("rotateLeftY") && rotate) nGeom.rotate(-5 * tpf, 0, 0);
                 }
             };
         };
