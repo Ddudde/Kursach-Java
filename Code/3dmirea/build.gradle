@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version "1.0.11.RELEASE"
+	id 'war'
+	id 'java'
+}
+
+group = 'ru.mirea'
+version = '0.9'
+sourceCompatibility = 11
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	compile files('lib/jimObjModelImporterJFX.jar')
+	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'org.openjfx:javafx-base:13:win'
+	compile 'org.openjfx:javafx-controls:13:win'
+	compile 'org.openjfx:javafx-graphics:13:win'
+	compile 'org.openjfx:javafx-fxml:13:win'
+	compile 'org.openjfx:javafx-media:13:win'
+	implementation 'javax.persistence:persistence-api:1.0'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+task build_exe(type: Exec) {
+	workingDir 'F:\\Desk\\Rep\\Kursach-Java\\Code\\3dmirea'
+	commandLine "launch4jc.exe", "exec.xml"
+}
+
+bootWar {
+	baseName = "Comps"
+	mainClassName = "ru.mirea.MireaApplication"
+}
+
+task runnn_exe {
+	dependsOn(bootWar)
+	dependsOn(build_exe)
+}

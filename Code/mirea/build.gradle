@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.5'
+	id 'org.springframework.boot' version '2.5.6'
 	id 'io.spring.dependency-management' version "1.0.11.RELEASE"
 	id 'war'
 	id 'java'
@@ -7,35 +7,34 @@ plugins {
 
 group = 'ru.mirea'
 version = '0.9'
-sourceCompatibility = 11
+sourceCompatibility = 17
 
 repositories {
 	mavenCentral()
-	jcenter()
-	maven { url 'https://jitpack.io' }
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
 dependencies {
-	compile files('lib/Rlib&jME-javaFX-1.0.jar')
-	compile 'org.jmonkeyengine:jme3-core:3.4.0-stable'
-	compile 'org.jmonkeyengine:jme3-desktop:3.4.0-stable'
-	compile 'org.jmonkeyengine:jme3-lwjgl3:3.4.0-stable'
-	compile 'org.jmonkeyengine:jme3-plugins:3.4.0-stable'
-	compile 'org.jetbrains:annotations:18.0.0'
-	compile 'org.springframework.boot:spring-boot-starter'
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compile 'org.postgresql:postgresql'
-	compile 'org.openjfx:javafx-base:13:win'
-	compile 'org.openjfx:javafx-controls:13:win'
-	compile 'org.openjfx:javafx-graphics:13:win'
-	compile 'org.openjfx:javafx-fxml:13:win'
-	compile 'org.openjfx:javafx-media:13:win'
+	implementation files('lib/jimObjModelImporterJFX.jar')
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.openjfx:javafx-base:17.0.0.1:win'
+	implementation 'org.openjfx:javafx-controls:17.0.0.1:win'
+	implementation 'org.openjfx:javafx-graphics:17.0.0.1:win'
+	implementation 'org.openjfx:javafx-fxml:17.0.0.1:win'
+	implementation 'org.openjfx:javafx-media:17.0.0.1:win'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
 task build_exe(type: Exec) {
-	workingDir 'F:\\Rep\\Kursach-Java\\Code\\mirea'
+	workingDir 'F:\\Desk\\Rep\\Kursach-Java\\Code\\mirea'
 	commandLine "launch4jc.exe", "exec.xml"
 }
 

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.ProjController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.ProjController">
    <children>
       <StackPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" StackPane.alignment="TOP_CENTER">
          <children>
@@ -200,8 +200,8 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <ImageView fx:id="proc" fitHeight="512.0" fitWidth="512.0" layoutX="372.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
-                     </children>
+                        <Pane fx:id="CPU" layoutX="372.0" layoutY="36.0" prefHeight="512.0" prefWidth="640.0"/>
+               </children>
                   </Pane>
                   <Pane fx:id="id_7" layoutX="15.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
                      <children>
@@ -218,6 +218,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="matb" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_8" layoutX="15.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
@@ -235,6 +236,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="cooler" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_9" layoutX="15.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
@@ -252,6 +254,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="RAM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_10" layoutX="15.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
@@ -269,6 +272,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="GPU" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_11" layoutX="15.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
@@ -286,6 +290,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="ROM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_12" layoutX="15.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
@@ -303,6 +308,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="korp" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_13" layoutX="15.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="384.0" prefWidth="320.0" visible="false">
@@ -320,6 +326,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Pane fx:id="block" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0"/>
                      </children>
                   </Pane>
                   <Pane fx:id="id_14" layoutX="253.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="409.0" prefWidth="759.0" visible="false">
@@ -359,7 +366,7 @@
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="468.0" layoutY="3.0" onMouseClicked="#browse_git" text="github" textFill="#ff9700" underline="true">
+            <Hyperlink layoutX="468.0" layoutY="3.0" onMouseClicked="#browse_git" text="github." textFill="#ff9700" underline="true">
                <font>
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
