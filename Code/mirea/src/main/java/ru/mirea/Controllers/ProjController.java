@@ -9,13 +9,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import ru.mirea.Start;
@@ -31,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public class ProjController {
 
@@ -44,11 +50,28 @@ public class ProjController {
     @FXML
     private ImageView icon;
 
+    @FXML
+    private Pane glavn;
+
+    @FXML
+    private Pane news;
+
+    @FXML
+    private Pane cont;
+
+    @FXML
+    private VBox menu;
+
+    @FXML
+    private Pane edit;
+
     private User user;
 
     private Scene3D scene3D;
 
     private final Interpolator inter = Interpolator.EASE_BOTH;
+
+    private int ico = 0;
 
     public void init()
     {
@@ -68,6 +91,16 @@ public class ProjController {
     public void browse_git() throws URISyntaxException, IOException {
         Desktop d = Desktop.getDesktop();
         d.browse(new URI("https://github.com/Ddudde/Kursach-Java"));
+    }
+
+    public void browse_3535() throws URISyntaxException, IOException {
+        Desktop d = Desktop.getDesktop();
+        d.browse(new URI("tel:+78005553535"));
+    }
+
+    public void browse_0088() throws URISyntaxException, IOException {
+        Desktop d = Desktop.getDesktop();
+        d.browse(new URI("tel:+53535550088"));
     }
 
     public void next_list()
@@ -95,17 +128,34 @@ public class ProjController {
 
     public void toNews()
     {
-
+        glavn.setVisible(false);
+        news.setVisible(true);
+        cont.setVisible(false);
+        edit.setVisible(false);
     }
 
     public void toContact()
     {
-
+        glavn.setVisible(false);
+        news.setVisible(false);
+        cont.setVisible(true);
+        edit.setVisible(false);
     }
 
     public void toMain()
     {
+        glavn.setVisible(true);
+        news.setVisible(false);
+        cont.setVisible(false);
+        edit.setVisible(false);
+    }
 
+    public void toEdit()
+    {
+        glavn.setVisible(false);
+        news.setVisible(false);
+        cont.setVisible(false);
+        edit.setVisible(true);
     }
 
     public void onBut(MouseEvent mouseEvent)
@@ -188,6 +238,22 @@ public class ProjController {
         played(kv, 100);
     }
 
+    public void onUser(MouseEvent mouseEvent)
+    {
+        menu.setVisible(true);
+    }
+
+    public void neUser(MouseEvent mouseEvent)
+    {
+        menu.setVisible(false);
+    }
+
+    public void onUS(MouseEvent mouseEvent)
+    {
+        menu.setVisible(true);
+        onNav(mouseEvent);
+    }
+
     public void onPN(MouseEvent mouseEvent)
     {
         Label label = getLabel(mouseEvent.getSource());
@@ -206,7 +272,7 @@ public class ProjController {
         played(kv, 100);
     }
 
-    public void onGit(MouseEvent mouseEvent)
+    public void onLink(MouseEvent mouseEvent)
     {
         Hyperlink label = (Hyperlink) mouseEvent.getSource();
         Glow glow = (Glow) label.getEffect();
@@ -215,7 +281,7 @@ public class ProjController {
         played(kv, 100);
     }
 
-    public void neGit(MouseEvent mouseEvent)
+    public void neLink(MouseEvent mouseEvent)
     {
         Hyperlink label = (Hyperlink) mouseEvent.getSource();
         Glow glow = (Glow) label.getEffect();
@@ -224,7 +290,7 @@ public class ProjController {
         played(kv, 100);
     }
 
-    public void onPG(MouseEvent mouseEvent)
+    public void onPL(MouseEvent mouseEvent)
     {
         Hyperlink label = (Hyperlink) mouseEvent.getSource();
         Glow glow = (Glow) label.getEffect();
@@ -235,7 +301,7 @@ public class ProjController {
         played(kv, 100);
     }
 
-    public void nePG(MouseEvent mouseEvent)
+    public void nePL(MouseEvent mouseEvent)
     {
         Hyperlink label = (Hyperlink) mouseEvent.getSource();
         InnerShadow innerShadow = (InnerShadow) ((DropShadow)((Glow)label.getEffect()).getInput()).getInput();
@@ -271,5 +337,35 @@ public class ProjController {
         }
         time1.setOnFinished(this::handle1);
         time1.play();
+    }
+
+    public void textch(KeyEvent keyEvent)
+    {
+
+    }
+
+    public void onreg()
+    {
+
+    }
+
+    public void rad1()
+    {
+        ico = 0;
+    }
+
+    public void rad2()
+    {
+        ico = 1;
+    }
+
+    public void rad3()
+    {
+        ico = 2;
+    }
+
+    public void ranpar()
+    {
+
     }
 }
