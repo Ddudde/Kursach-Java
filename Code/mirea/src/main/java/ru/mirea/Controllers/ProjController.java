@@ -1,30 +1,42 @@
 package ru.mirea.Controllers;
 
+import javafx.animation.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.WritableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.MediaView;
-import ru.mirea.MireaApplication;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import ru.mirea.Start;
 import ru.mirea.ThreeD.Scene3D;
 import ru.mirea.data.User;
-import ru.mirea.data.UsersImpl;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Objects;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class ProjController {
 
     private int id = 1;
 
-    private UsersImpl usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
+    //private UsersImpl usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
 
     @FXML
     private Label usern;
@@ -36,9 +48,11 @@ public class ProjController {
 
     private Scene3D scene3D;
 
+    private final Interpolator inter = Interpolator.EASE_BOTH;
+
     public void init()
     {
-        user = usersImpl.getuser(Start.usename);
+        //user = usersImpl.getuser(Start.usename);
         if(user != null)
         {
             usern.setText(Start.usename);
@@ -77,5 +91,185 @@ public class ProjController {
                 scene3D.undestroy(view3d.getId());
             view3d.getChildren().add(scene3D.getScene());
         }
+    }
+
+    public void toNews()
+    {
+
+    }
+
+    public void toContact()
+    {
+
+    }
+
+    public void toMain()
+    {
+
+    }
+
+    public void onBut(MouseEvent mouseEvent)
+    {
+        Button but = (Button) mouseEvent.getSource();
+        InnerShadow innerShadow = (InnerShadow) but.getEffect();
+        Glow glow = (Glow) innerShadow.getInput();
+        Label label = (Label) but.getChildrenUnmodifiable().get(0);
+        DropShadow dropShadow = (DropShadow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.offsetYProperty(), 0, inter));
+        kv.add(new KeyValue(glow.levelProperty(), 0.3, inter));
+        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#000000",0.5), inter));
+        played(kv, 100);
+    }
+
+    public void neBut(MouseEvent mouseEvent)
+    {
+        Button but = (Button) mouseEvent.getSource();
+        InnerShadow innerShadow = (InnerShadow) but.getEffect();
+        Glow glow = (Glow) innerShadow.getInput();
+        Label label = (Label) but.getChildrenUnmodifiable().get(0);
+        DropShadow dropShadow = (DropShadow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.offsetYProperty(), -5, inter));
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#000000",1), inter));
+        played(kv, 100);
+    }
+
+    public void onPRB(MouseEvent mouseEvent)
+    {
+        Button but = (Button) mouseEvent.getSource();
+        InnerShadow innerShadow = (InnerShadow) but.getEffect();
+        Glow glow = (Glow) innerShadow.getInput();
+        Label label = (Label) but.getChildrenUnmodifiable().get(0);
+        DropShadow dropShadow = (DropShadow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.offsetYProperty(), 0, inter));
+        kv.add(new KeyValue(innerShadow.widthProperty(), 60, inter));
+        kv.add(new KeyValue(innerShadow.heightProperty(), 60, inter));
+        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#000000",1), inter));
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#000000",0.5), inter));
+        played(kv, 100);
+    }
+
+    public void nePRB(MouseEvent mouseEvent)
+    {
+        Button but = (Button) mouseEvent.getSource();
+        InnerShadow innerShadow = (InnerShadow) but.getEffect();
+        Glow glow = (Glow) innerShadow.getInput();
+        Label label = (Label) but.getChildrenUnmodifiable().get(0);
+        DropShadow dropShadow = (DropShadow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.offsetYProperty(), -5, inter));
+        kv.add(new KeyValue(innerShadow.widthProperty(), 0, inter));
+        kv.add(new KeyValue(innerShadow.heightProperty(), 1, inter));
+        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ffffff",0.25), inter));
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#000000",1), inter));
+        played(kv, 100);
+    }
+
+    public void onNav(MouseEvent mouseEvent)
+    {
+        Label label = getLabel(mouseEvent.getSource());
+        Glow glow = (Glow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(glow.levelProperty(), 1.0, inter));
+        played(kv, 100);
+    }
+
+    public void neNav(MouseEvent mouseEvent)
+    {
+        Label label = getLabel(mouseEvent.getSource());
+        Glow glow = (Glow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        played(kv, 100);
+    }
+
+    public void onPN(MouseEvent mouseEvent)
+    {
+        Label label = getLabel(mouseEvent.getSource());
+        InnerShadow innerShadow = (InnerShadow) ((DropShadow)((Glow)label.getEffect()).getInput()).getInput();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.chokeProperty(), 0.3, inter));
+        played(kv, 100);
+    }
+
+    public void nePN(MouseEvent mouseEvent)
+    {
+        Label label = getLabel(mouseEvent.getSource());
+        InnerShadow innerShadow = (InnerShadow) ((DropShadow)((Glow)label.getEffect()).getInput()).getInput();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.chokeProperty(), 0, inter));
+        played(kv, 100);
+    }
+
+    public void onGit(MouseEvent mouseEvent)
+    {
+        Hyperlink label = (Hyperlink) mouseEvent.getSource();
+        Glow glow = (Glow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(glow.levelProperty(), 1.0, inter));
+        played(kv, 100);
+    }
+
+    public void neGit(MouseEvent mouseEvent)
+    {
+        Hyperlink label = (Hyperlink) mouseEvent.getSource();
+        Glow glow = (Glow) label.getEffect();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        played(kv, 100);
+    }
+
+    public void onPG(MouseEvent mouseEvent)
+    {
+        Hyperlink label = (Hyperlink) mouseEvent.getSource();
+        Glow glow = (Glow) label.getEffect();
+        InnerShadow innerShadow = (InnerShadow) ((DropShadow)glow.getInput()).getInput();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(glow.levelProperty(), 0, inter));
+        kv.add(new KeyValue(innerShadow.chokeProperty(), 0.3, inter));
+        played(kv, 100);
+    }
+
+    public void nePG(MouseEvent mouseEvent)
+    {
+        Hyperlink label = (Hyperlink) mouseEvent.getSource();
+        InnerShadow innerShadow = (InnerShadow) ((DropShadow)((Glow)label.getEffect()).getInput()).getInput();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.chokeProperty(), 0, inter));
+        played(kv, 100);
+    }
+
+    private Label getLabel(Object obj)
+    {
+        if(obj.getClass().getSimpleName().equals("Pane")) {
+            Pane pane = (Pane) obj;
+            return (Label) pane.getChildren().get(0);
+        } else {
+            return usern;
+        }
+    }
+
+    public void handle1(ActionEvent event)
+    {
+        Timeline time1 = (Timeline) event.getSource();
+        time1.stop();
+        time1.getKeyFrames().remove(0, time1.getKeyFrames().size());
+        time1 = null;
+    }
+
+    private void played(Collection<KeyValue> kv, double time)
+    {
+        Timeline time1 = new Timeline();
+        for(KeyValue key : kv)
+        {
+            time1.getKeyFrames().add(new KeyFrame(Duration.millis(time), key));
+        }
+        time1.setOnFinished(this::handle1);
+        time1.play();
     }
 }

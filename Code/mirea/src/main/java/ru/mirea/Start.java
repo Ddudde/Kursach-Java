@@ -44,9 +44,9 @@ public class Start extends Application {
         primStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/ico.png")));
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
-        show_start();
+        //show_start();
         //close_start();
-        //show_project();
+        show_project();
     }
 
     public void show_start() throws IOException {

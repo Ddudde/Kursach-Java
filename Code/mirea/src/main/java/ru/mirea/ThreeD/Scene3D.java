@@ -46,6 +46,17 @@ public class Scene3D {
         scene.setOnMousePressed(null);
         scene.setOnMouseDragged(null);
         world.getChildren().remove(world.getChildren().get(3));
+        cameraXform.ry.setAngle(320.0);
+        cameraXform.rx.setAngle(40);
+        mouseOldX = 0;
+        mouseOldY = 0;
+        mousePosX = 0;
+        mousePosY = 0;
+        mouseDeltaX = 0;
+        mouseDeltaY = 0;
+        camera.setTranslateZ(-cameraDistance);
+        cameraXform2.t.setX(0);
+        cameraXform2.t.setY(0);
     }
 
     public void undestroy(String comp){
