@@ -137,7 +137,7 @@
                </StackPane>
             </StackPane>
          </HBox>
-         <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
+         <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
             <Pane fx:id="id_1" layoutX="306.0" layoutY="258.0" prefHeight="154.0" prefWidth="654.0">
                <Label layoutX="88.0" layoutY="26.0" text="Вы успешно авторизовались." textAlignment="CENTER" textFill="#ff9700">
                   <font>
@@ -761,11 +761,39 @@
                </ImageView>
             </Pane>
          </Pane>
-         <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
+         <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
             <Pane fx:id="p_edit" layoutX="350.0" layoutY="115.0" prefHeight="400.0" prefWidth="568.0">
                <Pane layoutX="34.0" layoutY="66.0" prefHeight="320.0" prefWidth="500.0" styleClass="auth" stylesheets="@../css/auth.css">
-                  <TextField fx:id="log" layoutX="30.0" layoutY="130.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Логин" />
-                  <PasswordField fx:id="par" layoutX="30.0" layoutY="190.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль" />
+                  <TextField fx:id="log" layoutX="30.0" layoutY="130.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Логин">
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="1.0" opacity="0.0" />
+                           </color>
+                           <input>
+                              <DropShadow blurType="GAUSSIAN" height="30.0" radius="14.5" width="30.0">
+                                 <color>
+                                    <Color red="1.0" opacity="0.0" />
+                                 </color>
+                              </DropShadow>
+                           </input>
+                        </InnerShadow>
+                     </effect></TextField>
+                  <PasswordField fx:id="par" layoutX="30.0" layoutY="190.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль">
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="30.0" radius="14.5" width="30.0">
+                           <input>
+                              <DropShadow blurType="ONE_PASS_BOX" height="30.0" radius="14.5" width="30.0">
+                                 <color>
+                                    <Color red="1.0" opacity="0.0" />
+                                 </color>
+                              </DropShadow>
+                           </input>
+                           <color>
+                              <Color red="1.0" opacity="0.0" />
+                           </color>
+                        </InnerShadow>
+                     </effect></PasswordField>
                   <Button defaultButton="true" layoutX="325.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#onedit" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
                      <font>
                         <Font name="Times New Roman Bold" size="24.0" />
