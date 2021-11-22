@@ -11,13 +11,9 @@ public class SetCtx {
     public SetCtx() {
     }
 
-    public SetCtx(Start st) {
-        this.st = st;
-    }
-
     public void setCt(ConfigurableApplicationContext ct1) {
         ct = ct1;
         MireaApplication.ctx = ct;
-        st.starts();
+        Start.starts();
     }
 }

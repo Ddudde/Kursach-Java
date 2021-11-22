@@ -26,8 +26,6 @@ public class Start extends Application {
 
     public static Pane root;
 
-    private static MediaView medWiu;
-
     public static Map<String, Object> roots;
 
     private static Scene scene;
@@ -38,41 +36,44 @@ public class Start extends Application {
 
     public static String usename;
 
+    public static final MediaPlayer player = new MediaPlayer( new Media(Start.class.getResource("/video/background.mp4").toExternalForm()));
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         primStage = primaryStage;
         primStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/ico.png")));
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
-        //show_start();
+        show_start();
+        start_spring();
         //close_start();
-        show_project();
+        //show_project();
     }
 
-    public void show_start() throws IOException {
+    public static void show_start() throws IOException {
         loader = new FXMLLoader();
-        URL xmlUrl = getClass().getResource("/fxml/start.fxml");
+        URL xmlUrl = Start.class.getResource("/fxml/start.fxml");
         loader.setLocation(xmlUrl);
         root = loader.load();
         roots = loader.getNamespace();
         scene = new Scene(root,1280,720, true, SceneAntialiasing.DISABLED);
         primStage.setScene(scene);
         primStage.show();
-        start_spring();
     }
 
-    public void start_spring()
+    public static void start_spring()
     {
-        new StartSpring(new SetCtx(this)).start();
+        new StartSpring(new SetCtx()).start();
     }
 
-    public void starts() {
+    public static void starts() {
         ((StartController)loader.getController()).init();
         start_vid();
     }
 
     public static void close_start()
     {
+        player.stop();
         primStage.close();
     }
 
@@ -90,11 +91,14 @@ public class Start extends Application {
         ((ProjController)loader.getController()).init();
     }
 
+    public static void close_project()
+    {
+        primStage.close();
+    }
+
     public static void start_vid()
     {
-        MediaPlayer player = new MediaPlayer( new Media(Start.class.getResource("/video/background.mp4").toExternalForm()));
-        medWiu = (MediaView) roots.get("medWiu");
-        medWiu.setMediaPlayer(player);
+        ((MediaView) roots.get("medWiu")).setMediaPlayer(player);
         player.setCycleCount(MediaPlayer.INDEFINITE);
         player.play();
     }

@@ -14,7 +14,7 @@ public class UsersImpl {
         this.userRep = userRep;
     }
 
-    public void add(User user) {
+    public void addorsave(User user) {
         userRep.save(user);
     }
 

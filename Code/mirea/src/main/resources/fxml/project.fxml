@@ -23,1040 +23,1014 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.ProjController">
-   <children>
-      <StackPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" StackPane.alignment="TOP_CENTER">
-         <children>
-            <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
-               <children>
-                  <HBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1280.0" stylesheets="@../css/panel.css">
-                     <children>
-                        <Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
-                           <children>
-                              <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toNews" text="Новости" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="TWO_PASS_BOX" height="11.88" radius="5.470000000000001" width="12.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
-                           <children>
-                              <Label layoutX="102.0" layoutY="11.0" onMouseClicked="#toContact" text="Контакты" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="TWO_PASS_BOX" height="10.0" radius="5.0" width="12.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
-                           <children>
-                              <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toMain" text="Главная" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <StackPane onMouseEntered="#onUS" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
-                           <children>
-                              <StackPane maxWidth="-Infinity" prefHeight="40.0" StackPane.alignment="CENTER">
-                                 <children>
-                                    <ImageView fx:id="icon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                                       <image>
-                                          <Image url="@../img/ls-icon2.png" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="usern" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" text="UserUserUser" textAlignment="CENTER" textFill="#ff9700" StackPane.alignment="CENTER">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets />
-                                       </StackPane.margin>
-                                       <padding>
-                                          <Insets left="40.0" right="20.0" />
-                                       </padding>
-                                       <effect>
-                                          <Glow level="0.0">
-                                             <input>
-                                                <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                                   <input>
-                                                      <InnerShadow blurType="TWO_PASS_BOX" height="12.0" radius="5.5" width="12.0" />
-                                                   </input>
-                                                   <color>
-                                                      <Color opacity="0.75" />
-                                                   </color>
-                                                </DropShadow>
-                                             </input>
-                                          </Glow>
-                                       </effect>
-                                    </Label>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
-                                       <image>
-                                          <Image url="@../img/edit.png" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                 </children>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </StackPane>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </HBox>
-                  <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
-                     <children>
-                        <Pane fx:id="id_1" layoutX="306.0" layoutY="258.0" prefHeight="154.0" prefWidth="654.0">
-                           <children>
-                              <Label layoutX="88.0" layoutY="26.0" text="Вы успешно авторизовались." textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="36.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="279.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Окей!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_2" layoutX="269.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="654.0" visible="false">
-                           <children>
-                              <Label layoutX="66.0" layoutY="14.0" prefHeight="244.0" prefWidth="523.0" text="Давайте разберёмся с комплектующими вместе. Мы заботимся о своих покупателях. И поэтому не желаем чтобы вы обманулись." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="36.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="269.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Вперёд!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_3" layoutX="306.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="442.0" prefWidth="654.0" visible="false">
-                           <children>
-                              <Label layoutX="37.0" layoutY="26.0" prefHeight="323.0" prefWidth="581.0" text="Итак, вы решились на самостоятельную сборку домашнего компьютера из комплектующих. Поздравляем! Это не только интересно, но и более экономично, чем покупать готовую машину. Если с задачей подбора «железа» вы сталкиваетесь впервые, то вам обязательно помогут наши советы. Мы расскажем, из чего состоит компьютер, и дадим рекомендации по выбору процессора, дисков, памяти и всех остальных ключевых элементов вашего будущего ПК." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="265.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Начнём!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_4" layoutX="306.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="654.0" visible="false">
-                           <children>
-                              <Label layoutX="37.0" layoutY="26.0" prefHeight="218.0" prefWidth="581.0" text="Любой настольный компьютер – это конструктор. Довольно увлекательный и абсолютно доступный каждому. В том плане, что ничего страшного в самостоятельной сборке ПК из купленных в магазине комплектующих нет. Фактически вы просто берёте несколько компонентов и лишь соединяете их друг с другом." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="275.0" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_5" layoutX="306.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="270.0" prefWidth="654.0" visible="false">
-                           <children>
-                              <Label layoutX="36.0" layoutY="14.0" prefHeight="187.0" prefWidth="581.0" text="Компонентов этих далеко не так много, как может изначально показаться. Самое главное – подобрать такой набор, чтобы всё совмещалось без проблем. Мы составили для вас список ключевых компонентов настольного компьютера в том порядке, в котором их лучше всего выбирать." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="275.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_6" layoutX="169.0" layoutY="44.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="583.0" prefWidth="928.0" visible="false">
-                           <children>
-                              <Label layoutX="14.0" layoutY="177.0" prefHeight="187.0" prefWidth="290.0" text="Процессор. «Мозг» вашего будущего ПК. Этот чип управляет всеми вычислительными процессами." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="107.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="CPU" layoutX="372.0" layoutY="36.0" prefHeight="512.0" prefWidth="640.0" />
-                     </children>
-                        </Pane>
-                        <Pane fx:id="id_7" layoutX="94.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="244.0" prefWidth="290.0" text="Материнская плата. Это плата, которая является связующим звеном между всеми элементами компьютера, именно к ней подключаются все остальные комплектующие." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="matb" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_8" layoutX="9.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="244.0" prefWidth="290.0" text="Система охлаждения процессора. Может быть сделана в виде вентилятора (кулера) со стальным или медным радиатором или жидкостной системы охлаждения («водянка»)." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="cooler" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_9" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Оперативная память. Это очень быстрая временная память компьютера, в которой хранится информация о выполняемых в конкретный момент задачах. Например, локация игры, которую вы проходите, или фотография, которую вы обрабатываете в «Фотошопе». Как только вы заканчиваете операцию или выключаете компьютер, оперативная память очищается." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="RAM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_10" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Видеокарта. Устройство, отвечающее за преобразование битов и байтов информации в реальные визуальные образы, которые вы видите на мониторе. Чем лучше ваша видеокарта, тем лучше графика в играх и тем быстрее осуществляются все наиболее сложные процессы: 3D-моделирование и рендеринг, например." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="GPU" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_11" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Устройство хранения данных. Здесь компьютер хранит всю информацию: установленную систему, игры и даже недописанный курсач по экономике. Может быть выполнено в виде накопителя на жёстких магнитных дисках (HDD) или твердотельного накопителя (SSD). Если не вдаваться в детали, то первое медленнее и дешевле, а второе – быстрее и дороже." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="ROM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_12" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Корпус. То, что постоянно на виду. Прекрасный (или не очень), вместительный (не всегда) «ящик», внутри которого вы расположите все выбранные комплектующие." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="korp" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_13" layoutX="14.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="384.0" prefWidth="320.0" visible="false">
-                           <children>
-                              <Label layoutX="15.0" layoutY="14.0" prefHeight="299.0" prefWidth="290.0" text="Блок питания. Узел, который получает энергию от общей электросети и питает все компоненты компьютера. Чем мощнее вы хотите собрать компьютер – тем больше внимания нужно уделить выбору блока питания." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="108.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                              <Pane fx:id="block" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_14" layoutX="254.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="409.0" prefWidth="759.0" visible="false">
-                           <children>
-                              <Label layoutX="14.0" layoutY="14.0" prefHeight="332.0" prefWidth="733.0" text="Плюс есть пара дополнительных вещей. Если вы планируете разместить в корпусе сразу несколько HDD или SSD, то стоит убедиться, что вам хватит кабелей, с помощью которых они подключаются к материнской плате. Обычно один-два включают в комплект поставки корпуса. И ещё вам обязательно нужна будет термопаста – вязкая субстанция, которую вы аккуратно нанесёте на верхнюю часть процессора, прежде чем окончательно закрепить его на материнской плате специальной крышкой. Чаще всего достаточное её количество включено в комплект поставки кулера для процессора, но такая паста не всегда бывает качественной." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Button defaultButton="true" layoutX="329.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <graphic>
-                                    <Label text="Далее!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                 </graphic>
-                                 <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
-                                       <input>
-                                          <Glow level="0.0" />
-                                       </input>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="id_15" layoutX="306.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="139.0" prefWidth="654.0" visible="false">
-                           <children>
-                              <Label layoutX="37.0" layoutY="17.0" prefHeight="106.0" prefWidth="581.0" text="Вы ознакомленны с базовыми знаниями. Теперь вас будет намного сложнее обмануть! Удачи и хороших вам покупок." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="news" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
-                     <children>
-                        <Pane layoutX="292.0" layoutY="30.0" prefHeight="546.0" prefWidth="681.0">
-                           <children>
-                              <Label layoutX="10.0" layoutY="15.0" onMouseClicked="#toContact" text="В НЕВЕДЕНИИ" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="50.0" text="02.12.2020" textFill="GREY">
-                                 <font>
-                                    <Font name="Times New Roman Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="80.0">
-                                 <image>
-                                    <Image url="@../img/tuman.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="10.0" layoutY="300.0" onMouseClicked="#toContact" text="ПОШЛА ВОДА В ХАТУ" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="335.0" text="11.11.2020" textFill="GREY">
-                                 <font>
-                                    <Font name="Times New Roman Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="360.0" onMouseClicked="#toContact" text="Вот и подошли первые дедлайны по курсовой работе. А я только вспомнил о существовании курсовой..." textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman" size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="405.0" onMouseClicked="#toContact" text="ПОЯВИЛИСЬ ПЕРВЫЕ ПРЕДПОСЫЛКИ К КУРСОВОЙ&#10;РАБОТЕ..." textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="470.0" text="25.09.2020" textFill="GREY">
-                                 <font>
-                                    <Font name="Times New Roman Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="495.0" onMouseClicked="#toContact" text="Сразу же была выбрана тема: «Интернет-ресурс на тему «Компьютерные комплектующие» с использованием&#10;технологий HTML5, CSS3, JavaScript»" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman" size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="cont" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
-                     <children>
-                        <Pane layoutX="297.0" layoutY="30.0" prefHeight="442.0" prefWidth="671.0">
-                           <children>
-                              <Label layoutX="10.0" layoutY="15.0" onMouseClicked="#toContact" text="ТЕЛЕФОНЫ ДЛЯ СВЯЗИ" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Hyperlink layoutX="10.0" layoutY="45.0" onMouseClicked="#browse_3535" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="8 (800) 555 35 35" textFill="#ff9700" underline="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Hyperlink>
-                              <Hyperlink layoutX="10.0" layoutY="70.0" onMouseClicked="#browse_0088" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="5 (353) 555 00 88" textFill="#ff9700" underline="true">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="16.0" />
-                                 </font>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Hyperlink>
-                              <Label layoutX="10.0" layoutY="120.0" onMouseClicked="#toContact" text="КАРТА ПРОЕЗДА" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <ImageView fitHeight="270.0" fitWidth="501.0" layoutX="10.0" layoutY="160.0">
-                                 <image>
-                                    <Image url="@../img/map.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
-                     <children>
-                        <Pane fx:id="reg" layoutX="349.0" layoutY="95.0" prefHeight="400.0" prefWidth="568.0">
-                           <children>
-                              <Pane layoutX="34.0" layoutY="58.0" prefHeight="320.0" prefWidth="500.0" styleClass="auth" stylesheets="@../css/auth.css">
-                                 <children>
-                                    <TextField fx:id="r_log" layoutX="30.0" layoutY="130.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Логин" />
-                                    <PasswordField fx:id="r_par" layoutX="30.0" layoutY="190.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль" />
-                                    <Button layoutX="325.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#onreg" stylesheets="@../css/start.css" text="Применить!" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Label layoutX="30.0" layoutY="10.0" text="Выберите иконку для профиля:" textAlignment="CENTER" textFill="#ff9700">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="24.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="ONE_PASS_BOX" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-                                       </effect>
-                                    </Label>
-                                    <Button alignment="CENTER_RIGHT" layoutX="353.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#ranpar" prefHeight="22.0" prefWidth="137.0" stylesheets="@../css/start.css" text="Случайный пароль" textAlignment="RIGHT" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman" size="12.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
-                                       </padding>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="356.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/random.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Pane fx:id="r_caps" layoutX="30.0" layoutY="255.0" prefHeight="41.0" prefWidth="175.0">
-                                       <children>
-                                          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../img/warning.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="34.0" layoutY="14.0" text="Включён Caps Lock!" textFill="#c14503">
-                                             <font>
-                                                <Font name="Times New Roman Bold" size="12.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                    <Pane fx:id="logzan" layoutX="348.0" layoutY="135.0" prefHeight="41.0" prefWidth="118.0" visible="false">
-                                       <children>
-                                          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../img/exclamation.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="34.0" layoutY="14.0" text="Логин занят!" textFill="#c14503">
-                                             <font>
-                                                <Font name="Times New Roman Bold" size="12.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                    <Pane fx:id="povpar" layoutX="348.0" layoutY="255.0" prefHeight="41.0" prefWidth="146.0" visible="false">
-                                       <children>
-                                          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../img/exclamation.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="34.0" layoutY="14.0" text="Повторите пароль!" textFill="#c14503">
-                                             <font>
-                                                <Font name="Times New Roman Bold" size="12.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                    <HBox layoutX="30.0" layoutY="45.0" prefHeight="80.0" prefWidth="300.0">
-                                       <children>
-                                          <Pane onMouseClicked="#rad1" prefHeight="80.0" prefWidth="100.0">
-                                             <children>
-                                                <RadioButton layoutY="60.0" mnemonicParsing="false">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="toogl11" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/ls-icon1.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Pane>
-                                          <Pane onMouseClicked="#rad2" prefHeight="80.0" prefWidth="100.0">
-                                             <children>
-                                                <RadioButton layoutY="60.0" mnemonicParsing="false" selected="true">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="toogl12" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/ls-icon2.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Pane>
-                                          <Pane onMouseClicked="#rad3" prefHeight="80.0" prefWidth="100.0">
-                                             <children>
-                                                <RadioButton layoutY="60.0" mnemonicParsing="false">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="toogl1" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/ls-icon3.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Pane>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </Pane>
-                              <Label layoutX="127.0" layoutY="14.0" text="Изменение данных аккаунта" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <VBox fx:id="menu" alignment="CENTER" layoutX="960.0" onMouseEntered="#onUser" onMouseExited="#neUser" prefHeight="200.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 0;" visible="false">
-                     <children>
-                        <StackPane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" />
-                        <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0">
-                           <children>
-                              <Label layoutX="99.0" layoutY="17.0" onMouseClicked="#toEdit" text="Редактировать&#10;профиль" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 -1;">
-                           <children>
-                              <Label layoutX="125.0" layoutY="24.0" onMouseClicked="#toMain" text="Выход" textAlignment="CENTER" textFill="#ff9700">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="24.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <Glow level="0.0">
-                                       <input>
-                                          <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
-                                             <input>
-                                                <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
-                                             </input>
-                                          </DropShadow>
-                                       </input>
-                                    </Glow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </VBox>
-               </children>
+   <StackPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" StackPane.alignment="TOP_CENTER">
+      <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
+         <HBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1280.0" stylesheets="@../css/panel.css">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+               <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toNews" text="Новости" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="TWO_PASS_BOX" height="11.88" radius="5.470000000000001" width="12.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Label>
             </Pane>
-         </children>
-      </StackPane>
-      <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="530.0" StackPane.alignment="BOTTOM_RIGHT">
-         <children>
-            <Label layoutX="14.0" layoutY="7.0" text="© 2021 ООО &quot;Рога и Копыта&quot; Все права защищены. Project on " textFill="#ff9700">
-               <font>
-                  <Font name="Times New Roman Bold" size="16.0" />
-               </font>
-               <effect>
-                  <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
-               </effect>
-            </Label>
-            <Hyperlink layoutX="468.0" layoutY="3.0" onMouseClicked="#browse_git" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="github." textFill="#ff9700" underline="true">
-               <font>
-                  <Font name="Times New Roman Bold" size="16.0" />
-               </font>
-               <effect>
-                  <Glow level="0.0">
-                     <input>
-                        <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+               <Label layoutX="102.0" layoutY="11.0" onMouseClicked="#toContact" text="Контакты" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="TWO_PASS_BOX" height="10.0" radius="5.0" width="12.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Label>
+            </Pane>
+            <Pane maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+               <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toMain" text="Главная" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Label>
+            </Pane>
+            <StackPane onMouseEntered="#onUS" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+               <StackPane maxWidth="-Infinity" prefHeight="40.0" StackPane.alignment="CENTER">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <ImageView fx:id="icon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <Image url="@../img/ls-icon2.png" />
+                  </ImageView>
+                  <Label fx:id="usern" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" text="UserUserUser" textAlignment="CENTER" textFill="#ff9700" StackPane.alignment="CENTER">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets left="40.0" right="20.0" />
+                     </padding>
+                     <effect>
+                        <Glow level="0.0">
                            <input>
-                              <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                              <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                                 <input>
+                                    <InnerShadow blurType="TWO_PASS_BOX" height="12.0" radius="5.5" width="12.0" />
+                                 </input>
+                                 <color>
+                                    <Color opacity="0.75" />
+                                 </color>
+                              </DropShadow>
                            </input>
-                        </DropShadow>
+                        </Glow>
+                     </effect>
+                  </Label>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <Image url="@../img/edit.png" />
+                  </ImageView>
+               </StackPane>
+            </StackPane>
+         </HBox>
+         <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
+            <Pane fx:id="id_1" layoutX="306.0" layoutY="258.0" prefHeight="154.0" prefWidth="654.0">
+               <Label layoutX="88.0" layoutY="26.0" text="Вы успешно авторизовались." textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="36.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="279.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Окей!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_2" layoutX="269.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="654.0" visible="false">
+               <Label layoutX="66.0" layoutY="14.0" prefHeight="244.0" prefWidth="523.0" text="Давайте разберёмся с комплектующими вместе. Мы заботимся о своих покупателях. И поэтому не желаем чтобы вы обманулись." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="36.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="269.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Вперёд!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_3" layoutX="306.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="442.0" prefWidth="654.0" visible="false">
+               <Label layoutX="37.0" layoutY="26.0" prefHeight="323.0" prefWidth="581.0" text="Итак, вы решились на самостоятельную сборку домашнего компьютера из комплектующих. Поздравляем! Это не только интересно, но и более экономично, чем покупать готовую машину. Если с задачей подбора «железа» вы сталкиваетесь впервые, то вам обязательно помогут наши советы. Мы расскажем, из чего состоит компьютер, и дадим рекомендации по выбору процессора, дисков, памяти и всех остальных ключевых элементов вашего будущего ПК." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="265.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Начнём!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_4" layoutX="306.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="654.0" visible="false">
+               <Label layoutX="37.0" layoutY="26.0" prefHeight="218.0" prefWidth="581.0" text="Любой настольный компьютер – это конструктор. Довольно увлекательный и абсолютно доступный каждому. В том плане, что ничего страшного в самостоятельной сборке ПК из купленных в магазине комплектующих нет. Фактически вы просто берёте несколько компонентов и лишь соединяете их друг с другом." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="275.0" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_5" layoutX="306.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="270.0" prefWidth="654.0" visible="false">
+               <Label layoutX="36.0" layoutY="14.0" prefHeight="187.0" prefWidth="581.0" text="Компонентов этих далеко не так много, как может изначально показаться. Самое главное – подобрать такой набор, чтобы всё совмещалось без проблем. Мы составили для вас список ключевых компонентов настольного компьютера в том порядке, в котором их лучше всего выбирать." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="275.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_6" layoutX="169.0" layoutY="44.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="583.0" prefWidth="928.0" visible="false">
+               <Label layoutX="14.0" layoutY="177.0" prefHeight="187.0" prefWidth="290.0" text="Процессор. «Мозг» вашего будущего ПК. Этот чип управляет всеми вычислительными процессами." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="107.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="CPU" layoutX="372.0" layoutY="36.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_7" layoutX="94.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="244.0" prefWidth="290.0" text="Материнская плата. Это плата, которая является связующим звеном между всеми элементами компьютера, именно к ней подключаются все остальные комплектующие." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="matb" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_8" layoutX="9.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="323.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="244.0" prefWidth="290.0" text="Система охлаждения процессора. Может быть сделана в виде вентилятора (кулера) со стальным или медным радиатором или жидкостной системы охлаждения («водянка»)." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="cooler" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_9" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Оперативная память. Это очень быстрая временная память компьютера, в которой хранится информация о выполняемых в конкретный момент задачах. Например, локация игры, которую вы проходите, или фотография, которую вы обрабатываете в «Фотошопе». Как только вы заканчиваете операцию или выключаете компьютер, оперативная память очищается." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="RAM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_10" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Видеокарта. Устройство, отвечающее за преобразование битов и байтов информации в реальные визуальные образы, которые вы видите на мониторе. Чем лучше ваша видеокарта, тем лучше графика в играх и тем быстрее осуществляются все наиболее сложные процессы: 3D-моделирование и рендеринг, например." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="GPU" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_11" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Устройство хранения данных. Здесь компьютер хранит всю информацию: установленную систему, игры и даже недописанный курсач по экономике. Может быть выполнено в виде накопителя на жёстких магнитных дисках (HDD) или твердотельного накопителя (SSD). Если не вдаваться в детали, то первое медленнее и дешевле, а второе – быстрее и дороже." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="ROM" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_12" layoutX="14.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="263.0" prefWidth="290.0" text="Корпус. То, что постоянно на виду. Прекрасный (или не очень), вместительный (не всегда) «ящик», внутри которого вы расположите все выбранные комплектующие." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="korp" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_13" layoutX="14.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="384.0" prefWidth="320.0" visible="false">
+               <Label layoutX="15.0" layoutY="14.0" prefHeight="299.0" prefWidth="290.0" text="Блок питания. Узел, который получает энергию от общей электросети и питает все компоненты компьютера. Чем мощнее вы хотите собрать компьютер – тем больше внимания нужно уделить выбору блока питания." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="108.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+               <Pane fx:id="block" layoutX="372.0" layoutY="-91.0" prefHeight="512.0" prefWidth="640.0" />
+            </Pane>
+            <Pane fx:id="id_14" layoutX="254.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="409.0" prefWidth="759.0" visible="false">
+               <Label layoutX="14.0" layoutY="14.0" prefHeight="332.0" prefWidth="733.0" text="Плюс есть пара дополнительных вещей. Если вы планируете разместить в корпусе сразу несколько HDD или SSD, то стоит убедиться, что вам хватит кабелей, с помощью которых они подключаются к материнской плате. Обычно один-два включают в комплект поставки корпуса. И ещё вам обязательно нужна будет термопаста – вязкая субстанция, которую вы аккуратно нанесёте на верхнюю часть процессора, прежде чем окончательно закрепить его на материнской плате специальной крышкой. Чаще всего достаточное её количество включено в комплект поставки кулера для процессора, но такая паста не всегда бывает качественной." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="329.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#next_list" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Далее!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </Pane>
+            <Pane fx:id="id_15" layoutX="306.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="139.0" prefWidth="654.0" visible="false">
+               <Label layoutX="37.0" layoutY="17.0" prefHeight="106.0" prefWidth="581.0" text="Вы ознакомленны с базовыми знаниями. Теперь вас будет намного сложнее обмануть! Удачи и хороших вам покупок." textAlignment="CENTER" textFill="#ff9700" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+            </Pane>
+         </Pane>
+         <Pane fx:id="news" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
+            <Pane layoutX="292.0" layoutY="30.0" prefHeight="546.0" prefWidth="681.0">
+               <Label layoutX="10.0" layoutY="15.0" onMouseClicked="#toContact" text="В НЕВЕДЕНИИ" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <Label layoutX="10.0" layoutY="50.0" text="02.12.2020" textFill="GREY">
+                  <font>
+                     <Font name="Times New Roman Italic" size="12.0" />
+                  </font>
+               </Label>
+               <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="80.0">
+                  <Image url="@../img/tuman.jpg" />
+               </ImageView>
+               <Label layoutX="10.0" layoutY="300.0" onMouseClicked="#toContact" text="ПОШЛА ВОДА В ХАТУ" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <Label layoutX="10.0" layoutY="335.0" text="11.11.2020" textFill="GREY">
+                  <font>
+                     <Font name="Times New Roman Italic" size="12.0" />
+                  </font>
+               </Label>
+               <Label layoutX="10.0" layoutY="360.0" onMouseClicked="#toContact" text="Вот и подошли первые дедлайны по курсовой работе. А я только вспомнил о существовании курсовой..." textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman" size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <Label layoutX="10.0" layoutY="405.0" onMouseClicked="#toContact" text="ПОЯВИЛИСЬ ПЕРВЫЕ ПРЕДПОСЫЛКИ К КУРСОВОЙ&#10;РАБОТЕ..." textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <Label layoutX="10.0" layoutY="470.0" text="25.09.2020" textFill="GREY">
+                  <font>
+                     <Font name="Times New Roman Italic" size="12.0" />
+                  </font>
+               </Label>
+               <Label layoutX="10.0" layoutY="495.0" onMouseClicked="#toContact" text="Сразу же была выбрана тема: «Интернет-ресурс на тему «Компьютерные комплектующие» с использованием&#10;технологий HTML5, CSS3, JavaScript»" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman" size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+            </Pane>
+         </Pane>
+         <Pane fx:id="cont" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
+            <Pane layoutX="297.0" layoutY="30.0" prefHeight="442.0" prefWidth="671.0">
+               <Label layoutX="10.0" layoutY="15.0" onMouseClicked="#toContact" text="ТЕЛЕФОНЫ ДЛЯ СВЯЗИ" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <Hyperlink layoutX="10.0" layoutY="45.0" onMouseClicked="#browse_3535" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="8 (800) 555 35 35" textFill="#ff9700" underline="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="16.0" />
+                  </font>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Hyperlink>
+               <Hyperlink layoutX="10.0" layoutY="70.0" onMouseClicked="#browse_0088" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="5 (353) 555 00 88" textFill="#ff9700" underline="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="16.0" />
+                  </font>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Hyperlink>
+               <Label layoutX="10.0" layoutY="120.0" onMouseClicked="#toContact" text="КАРТА ПРОЕЗДА" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="DEFAULT" />
+                  </cursor>
+               </Label>
+               <ImageView fitHeight="270.0" fitWidth="501.0" layoutX="10.0" layoutY="160.0">
+                  <Image url="@../img/map.jpg" />
+               </ImageView>
+            </Pane>
+         </Pane>
+         <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
+            <Pane fx:id="p_edit" layoutX="350.0" layoutY="115.0" prefHeight="400.0" prefWidth="568.0">
+               <Pane layoutX="34.0" layoutY="66.0" prefHeight="320.0" prefWidth="500.0" styleClass="auth" stylesheets="@../css/auth.css">
+                  <TextField fx:id="log" layoutX="30.0" layoutY="130.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Логин" />
+                  <PasswordField fx:id="par" layoutX="30.0" layoutY="190.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль" />
+                  <Button defaultButton="true" layoutX="325.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#onedit" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <Label text="Применить!" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="24.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                           </effect>
+                        </Label>
+                     </graphic>
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                           <input>
+                              <Glow level="0.0" />
+                           </input>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Label layoutX="30.0" layoutY="10.0" text="Выберите иконку для профиля:" textAlignment="CENTER" textFill="#ff9700">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                     </effect>
+                  </Label>
+                  <Pane fx:id="caps" layoutX="30.0" layoutY="255.0" prefHeight="41.0" prefWidth="175.0">
+                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../img/warning.png" />
+                     </ImageView>
+                     <Label layoutX="34.0" layoutY="14.0" text="Включён Caps Lock!" textFill="#c14503">
+                        <font>
+                           <Font name="Times New Roman Bold" size="12.0" />
+                        </font>
+                     </Label>
+                  </Pane>
+                  <Pane fx:id="logzan" layoutX="348.0" layoutY="135.0" prefHeight="41.0" prefWidth="118.0" visible="false">
+                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../img/exclamation.png" />
+                     </ImageView>
+                     <Label layoutX="34.0" layoutY="14.0" text="Логин занят!" textFill="#c14503">
+                        <font>
+                           <Font name="Times New Roman Bold" size="12.0" />
+                        </font>
+                     </Label>
+                  </Pane>
+                  <HBox layoutX="30.0" layoutY="45.0" prefHeight="80.0" prefWidth="300.0">
+                     <Pane onMouseClicked="#rad1" prefHeight="80.0" prefWidth="100.0">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <RadioButton fx:id="ra1" layoutY="60.0" mnemonicParsing="false" mouseTransparent="true">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toogl1" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../img/ls-icon1.png" />
+                        </ImageView>
+                     </Pane>
+                     <Pane onMouseClicked="#rad2" prefHeight="80.0" prefWidth="100.0">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <RadioButton fx:id="ra2" layoutY="60.0" mnemonicParsing="false" mouseTransparent="true" selected="true" toggleGroup="$toogl1" />
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../img/ls-icon2.png" />
+                        </ImageView>
+                     </Pane>
+                     <Pane onMouseClicked="#rad3" prefHeight="80.0" prefWidth="100.0">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <RadioButton fx:id="ra3" layoutY="60.0" mnemonicParsing="false" mouseTransparent="true" toggleGroup="$toogl1" />
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../img/ls-icon3.png" />
+                        </ImageView>
+                     </Pane>
+                  </HBox>
+                  <Button alignment="CENTER_RIGHT" defaultButton="true" layoutX="344.0" layoutY="199.0" maxHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#ranpar" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" prefHeight="33.0" prefWidth="146.0" stylesheets="@../css/start.css" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <Label text="Случайный пароль" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman" size="12.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                           </effect>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <Image url="@../img/random.png" />
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                           <input>
+                              <Glow level="0.0" />
+                           </input>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+               </Pane>
+               <Label layoutX="127.0" layoutY="14.0" text="Изменение данных профиля" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+               </Label>
+            </Pane>
+         </Pane>
+         <VBox fx:id="menu" alignment="CENTER" layoutX="960.0" onMouseEntered="#onUser" onMouseExited="#neUser" prefHeight="200.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 0;" visible="false">
+            <StackPane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" />
+            <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0">
+               <Label layoutX="99.0" layoutY="17.0" onMouseClicked="#toEdit" text="Редактировать&#10;профиль" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Label>
+            </Pane>
+            <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 -1;">
+               <Label layoutX="125.0" layoutY="24.0" onMouseClicked="#toBegin" text="Выход" textAlignment="CENTER" textFill="#ff9700">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.36" width="5.0">
+                              <input>
+                                 <InnerShadow blurType="TWO_PASS_BOX" height="11.5" radius="5.375" width="12.0" />
+                              </input>
+                           </DropShadow>
+                        </input>
+                     </Glow>
+                  </effect>
+               </Label>
+            </Pane>
+         </VBox>
+         <Pane fx:id="erpat" layoutX="10.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <Pane layoutX="37.0" prefHeight="41.0" prefWidth="127.0">
+               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../img/warning.png" />
+               </ImageView>
+               <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+            </Pane>
+            <Label layoutX="14.0" layoutY="41.0" prefHeight="50.0" prefWidth="179.0" text="Допустимы только латинница и цифры." textFill="#c14503" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+         </Pane>
+         <Pane fx:id="ernull" layoutX="10.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <Pane layoutX="37.0" prefHeight="41.0" prefWidth="127.0">
+               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../img/warning.png" />
+               </ImageView>
+               <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+            </Pane>
+            <Label layoutX="28.0" layoutY="41.0" prefHeight="50.0" prefWidth="146.0" text="Все поля должны быть заполнены!" textFill="#c14503" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+         </Pane>
+         <Pane fx:id="gen" layoutX="10.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="160.0" prefWidth="228.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <Pane layoutX="51.0" prefHeight="41.0" prefWidth="127.0">
+               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../img/warning.png" />
+               </ImageView>
+               <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                  <font>
+                     <Font name="Times New Roman Bold" size="18.0" />
+                  </font>
+               </Label>
+            </Pane>
+            <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Сгенирирован пароль:" textFill="#c14503" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="sgerpar" alignment="CENTER" layoutX="19.0" layoutY="70.0" prefWidth="190.0" text="DsAdSfewS" textAlignment="CENTER" textFill="#c14503">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="98.0" prefWidth="190.0" text="Он скопирован в буфер обмена." textAlignment="CENTER" textFill="#c14503" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+         </Pane>
+      </Pane>
+   </StackPane>
+   <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="530.0" StackPane.alignment="BOTTOM_RIGHT">
+      <StackPane.margin>
+         <Insets bottom="20.0" right="50.0" />
+      </StackPane.margin>
+      <Label layoutX="14.0" layoutY="7.0" text="© 2021 ООО &quot;Рога и Копыта&quot; Все права защищены. Project on " textFill="#ff9700">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+         <effect>
+            <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+         </effect>
+      </Label>
+      <Hyperlink layoutX="468.0" layoutY="3.0" onMouseClicked="#browse_git" onMouseEntered="#onLink" onMouseExited="#neLink" onMousePressed="#onPL" onMouseReleased="#nePL" text="github." textFill="#ff9700" underline="true">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+         <effect>
+            <Glow level="0.0">
+               <input>
+                  <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0">
+                     <input>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
                      </input>
-                  </Glow>
-               </effect>
-            </Hyperlink>
-         </children>
-         <StackPane.margin>
-            <Insets bottom="20.0" right="50.0" />
-         </StackPane.margin>
-      </AnchorPane>
-   </children>
+                  </DropShadow>
+               </input>
+            </Glow>
+         </effect>
+      </Hyperlink>
+   </AnchorPane>
 </StackPane>
