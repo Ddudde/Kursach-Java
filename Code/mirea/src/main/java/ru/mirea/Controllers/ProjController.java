@@ -1,16 +1,21 @@
 package ru.mirea.Controllers;
 
-import javafx.animation.*;
+import javafx.animation.KeyValue;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import ru.mirea.MireaApplication;
@@ -26,7 +31,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class ProjController extends ModelController{
 
@@ -75,9 +79,24 @@ public class ProjController extends ModelController{
     private Pane logzan;
 
     @FXML
-    private Label sgerpar;
+    private HBox nav;
+
+    @FXML
+    private Pane BN;
+
+    @FXML
+    private Pane BC;
+
+    @FXML
+    private Pane BM;
 
     private boolean caps_lock = false;
+
+    private Pane act_pane;
+
+    private int next_id = -1;
+
+    private int node = 0;
 
     public void init()
     {
@@ -86,15 +105,18 @@ public class ProjController extends ModelController{
         {
             usern.setText(Start.usename);
             set_ico();
+            if(user.getSohr() > 1) next_id = user.getSohr();
+        }
+        if(next_id == -1)
+        {
+            for(Node node : nav.getChildren()) node.setOpacity(0);
         }
         caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
+        act_pane = (Pane) Start.roots.get("id_" + id);
         p_edit.getScene().addEventHandler(KeyEvent.KEY_RELEASED, this::caps);
-        /*((Pane) Start.roots.get("id_1")).setVisible(false);
-        ((Pane) Start.roots.get("id_11")).setVisible(true);
-        Pane view3d = (Pane) ((Pane) Start.roots.get("id_11")).getChildren().get(2);
-        scene3D = new Scene3D(view3d.getId());
-        view3d.getChildren().add(scene3D.getScene());*/
+        toMain();
+        if(next_id == -1) onNavV();
     }
 
     public void browse_3535() throws URISyntaxException, IOException {
@@ -120,25 +142,30 @@ public class ProjController extends ModelController{
 
     public void next_list()
     {
-        Pane pane = (Pane) Start.roots.get("id_" + id);
-        id++;
-        Pane pane1 = (Pane) Start.roots.get("id_" + id);
-        pane.setVisible(false);
-        if(scene3D != null && pane.getChildren().size() > 2)
+        if(next_id > 1)
         {
-            Pane view3d = (Pane) pane.getChildren().get(2);
+            id = next_id;
+            next_id = -1;
+        } else id++;
+        act_pane.setVisible(false);
+        if(scene3D != null && act_pane.getChildren().size() > 2)
+        {
+            Pane view3d = (Pane) act_pane.getChildren().get(2);
             view3d.getChildren().remove(scene3D);
             scene3D.destroy();
         }
-        pane1.setVisible(true);
-        if(pane1.getChildren().size() > 2) {
-            Pane view3d = (Pane) pane1.getChildren().get(2);
+        act_pane = (Pane) Start.roots.get("id_" + id);
+        act_pane.setVisible(true);
+        if(act_pane.getChildren().size() > 2) {
+            Pane view3d = (Pane) act_pane.getChildren().get(2);
             if(scene3D == null)
                 scene3D = new Scene3D(view3d.getId());
             else
                 scene3D.undestroy(view3d.getId());
             view3d.getChildren().add(scene3D.getScene());
         }
+        user.setSohr(id);
+        usersImpl.addorsave(user);
     }
 
     private void caps(KeyEvent keyEvent)
@@ -154,45 +181,83 @@ public class ProjController extends ModelController{
         caps.setVisible(caps_lock);
     }
 
-    public void toNews()
+    private void upd_str()
     {
         glavn.setVisible(false);
-        news.setVisible(true);
+        news.setVisible(false);
         cont.setVisible(false);
         edit.setVisible(false);
         ernull.setVisible(false);
         erpat.setVisible(false);
         gen.setVisible(false);
+        if(erpat.getParent() != null) ((Pane)erpat.getParent()).getChildren().remove(erpat);
+        if(ernull.getParent() != null) ((Pane)ernull.getParent()).getChildren().remove(ernull);
+        if(gen.getParent() != null) ((Pane)gen.getParent()).getChildren().remove(gen);
+        nePN(newEvent(BN));
+        nePN(newEvent(BC));
+        nePN(newEvent(BM));
+    }
+
+    private MouseEvent newEvent(Object obj)
+    {
+        return new MouseEvent(obj, null, null, 0,0,0,0, null,0,false,false,false,false,false,false,false,false,false,false,false,false,null);
+    }
+
+    public void toNews()
+    {
+        upd_str();
+        news.setVisible(true);
+        onPN(newEvent(BN));
     }
 
     public void toContact()
     {
-        glavn.setVisible(false);
-        news.setVisible(false);
+        upd_str();
         cont.setVisible(true);
-        edit.setVisible(false);
-        ernull.setVisible(false);
-        erpat.setVisible(false);
-        gen.setVisible(false);
+        onPN(newEvent(BC));
     }
 
     public void toMain()
     {
+        upd_str();
         glavn.setVisible(true);
-        news.setVisible(false);
-        cont.setVisible(false);
-        edit.setVisible(false);
-        ernull.setVisible(false);
-        erpat.setVisible(false);
-        gen.setVisible(false);
+        onPN(newEvent(BM));
     }
 
     public void toEdit()
     {
-        glavn.setVisible(false);
-        news.setVisible(false);
-        cont.setVisible(false);
+        upd_str();
         edit.setVisible(true);
+    }
+
+    public void onEnter(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER) onedit();
+    }
+
+    private void onNavV()
+    {
+        List<KeyValue> kv = new ArrayList<>();
+        if(node == nav.getChildren().size() - 1) onUser1();
+        if(node <= nav.getChildren().size() - 1)
+        {
+            onNav(newEvent(nav.getChildren().get(node)));
+            kv.add(new KeyValue(nav.getChildren().get(node).opacityProperty(), 1.0, inter));
+            kv.add(new KeyValue(nav.getChildren().get(node).mouseTransparentProperty(), true, inter));
+            nav.getChildren().get(node).mouseTransparentProperty().addListener(this::changed);
+        }
+        played(kv, 1000);
+    }
+
+    private void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) {
+        if(new_val)
+        {
+            if(node == nav.getChildren().size() - 1) neUser();
+            neNav(newEvent(nav.getChildren().get(node)));
+            nav.getChildren().get(node).setMouseTransparent(false);
+            nav.getChildren().get(node).mouseTransparentProperty().removeListener(this::changed);
+            node++;
+            onNavV();
+        }
     }
 
     public void onNav(MouseEvent mouseEvent)
@@ -201,7 +266,7 @@ public class ProjController extends ModelController{
         Glow glow = (Glow) label.getEffect();
         List<KeyValue> kv = new ArrayList<>();
         kv.add(new KeyValue(glow.levelProperty(), 1.0, inter));
-        played(kv, 100);
+        played(kv, 200);
     }
 
     public void neNav(MouseEvent mouseEvent)
@@ -210,23 +275,33 @@ public class ProjController extends ModelController{
         Glow glow = (Glow) label.getEffect();
         List<KeyValue> kv = new ArrayList<>();
         kv.add(new KeyValue(glow.levelProperty(), 0, inter));
-        played(kv, 100);
+        played(kv, 200);
     }
 
-    public void onUser()
+    public void onUser(MouseEvent mouseEvent)
+    {
+        onNav(mouseEvent);
+        onUser1();
+    }
+
+    public void onUser1()
     {
         menu.setVisible(true);
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(menu.opacityProperty(), 1, inter));
+        kv.add(new KeyValue(menu.layoutYProperty(), 0, inter));
+        for(Node node : menu.getChildren()) kv.add(new KeyValue(node.mouseTransparentProperty(), false, inter));
+        played(kv, 500);
     }
 
     public void neUser()
     {
-        menu.setVisible(false);
-    }
-
-    public void onUS(MouseEvent mouseEvent)
-    {
-        menu.setVisible(true);
-        onNav(mouseEvent);
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(menu.layoutYProperty(), -175, inter));
+        kv.add(new KeyValue(menu.opacityProperty(), 0, inter));
+        kv.add(new KeyValue(menu.visibleProperty(), false, inter));
+        for(Node node : menu.getChildren()) kv.add(new KeyValue(node.mouseTransparentProperty(), true, inter));
+        played(kv, 500);
     }
 
     public void onPN(MouseEvent mouseEvent)
@@ -274,6 +349,8 @@ public class ProjController extends ModelController{
             user.setPassword(par.getText());
             user.setIcons(ico);
             usersImpl.addorsave(user);
+            usern.setText(Start.usename);
+            set_ico();
             toMain();
         }
     }
@@ -287,17 +364,6 @@ public class ProjController extends ModelController{
 
     public void ranpar()
     {
-        String password = "";
-        String symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        for (int i = 0; i < 15; i++){
-            password += symbols.charAt((int)Math.floor(Math.random() * symbols.length()));
-        }
-        par.setText(password);
-        sgerpar.setText(password);
-        gen.setVisible(true);
-        Clipboard clipboard = Clipboard.getSystemClipboard();
-        ClipboardContent content = new ClipboardContent();
-        content.putString(password);
-        clipboard.setContent(content);
+        ranpar(new PasswordField[]{par});
     }
 }

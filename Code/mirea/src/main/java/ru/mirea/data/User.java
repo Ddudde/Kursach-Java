@@ -26,6 +26,9 @@ public class User {
     @Column(name = "ico")
     private int icons;
 
+    @Column(name = "shr")
+    private int sohr;
+
     public boolean conf_auth(String pass)
     {
         return password.equals(pass);
@@ -38,6 +41,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", icons=" + icons +
+                ", sohr=" + sohr +
                 '}';
     }
 }

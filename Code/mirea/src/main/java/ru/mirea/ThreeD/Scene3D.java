@@ -1,11 +1,11 @@
 package ru.mirea.ThreeD;
 
 import com.interactivemesh.jfx.importer.obj.ObjModelImporter;
-import javafx.event.EventHandler;
 import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.shape.CullFace;
+import javafx.scene.shape.MeshView;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

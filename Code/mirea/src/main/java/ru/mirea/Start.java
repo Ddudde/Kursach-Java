@@ -2,24 +2,21 @@ package ru.mirea;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
 import ru.mirea.Controllers.ProjController;
 import ru.mirea.Controllers.StartController;
-import ru.mirea.ThreeD.Scene3D;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
 
 @Slf4j
 public class Start extends Application {

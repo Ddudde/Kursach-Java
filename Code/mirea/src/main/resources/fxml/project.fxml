@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.ProjController">
    <StackPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1265.0" style="-fx-background-color: #242424;" StackPane.alignment="TOP_CENTER">
       <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
-         <HBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1280.0" stylesheets="@../css/panel.css">
+         <HBox fx:id="nav" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1280.0" stylesheets="@../css/panel.css">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
-            <Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+            <Pane fx:id="BN" layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
                <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toNews" text="Новости" textAlignment="CENTER" textFill="#ff9700">
                   <font>
                      <Font name="Times New Roman Bold" size="24.0" />
@@ -50,7 +36,7 @@
                   </effect>
                </Label>
             </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+            <Pane fx:id="BC" maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
                <Label layoutX="102.0" layoutY="11.0" onMouseClicked="#toContact" text="Контакты" textAlignment="CENTER" textFill="#ff9700">
                   <font>
                      <Font name="Times New Roman Bold" size="24.0" />
@@ -71,7 +57,7 @@
                   </effect>
                </Label>
             </Pane>
-            <Pane maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+            <Pane fx:id="BM" maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
                <Label layoutX="112.0" layoutY="11.0" onMouseClicked="#toMain" text="Главная" textAlignment="CENTER" textFill="#ff9700">
                   <font>
                      <Font name="Times New Roman Bold" size="24.0" />
@@ -92,7 +78,7 @@
                   </effect>
                </Label>
             </Pane>
-            <StackPane onMouseEntered="#onUS" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
+            <StackPane onMouseEntered="#onUser" onMouseExited="#neNav" prefHeight="50.0" prefWidth="320.0" styleClass="panel" stylesheets="@../css/panel.css">
                <StackPane maxWidth="-Infinity" prefHeight="40.0" StackPane.alignment="CENTER">
                   <cursor>
                      <Cursor fx:constant="HAND" />
@@ -137,7 +123,7 @@
                </StackPane>
             </StackPane>
          </HBox>
-         <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
+         <Pane fx:id="glavn" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
             <Pane fx:id="id_1" layoutX="306.0" layoutY="258.0" prefHeight="154.0" prefWidth="654.0">
                <Label layoutX="88.0" layoutY="26.0" text="Вы успешно авторизовались." textAlignment="CENTER" textFill="#ff9700">
                   <font>
@@ -761,7 +747,7 @@
                </ImageView>
             </Pane>
          </Pane>
-         <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0">
+         <Pane fx:id="edit" layoutY="50.0" prefHeight="670.0" prefWidth="1265.0" visible="false">
             <Pane fx:id="p_edit" layoutX="350.0" layoutY="115.0" prefHeight="400.0" prefWidth="568.0">
                <Pane layoutX="34.0" layoutY="66.0" prefHeight="320.0" prefWidth="500.0" styleClass="auth" stylesheets="@../css/auth.css">
                   <TextField fx:id="log" layoutX="30.0" layoutY="130.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Логин">
@@ -779,7 +765,7 @@
                            </input>
                         </InnerShadow>
                      </effect></TextField>
-                  <PasswordField fx:id="par" layoutX="30.0" layoutY="190.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль">
+                  <PasswordField fx:id="par" layoutX="30.0" layoutY="190.0" onKeyPressed="#onEnter" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" height="30.0" radius="14.5" width="30.0">
                            <input>
@@ -924,9 +910,9 @@
                </Label>
             </Pane>
          </Pane>
-         <VBox fx:id="menu" alignment="CENTER" layoutX="960.0" onMouseEntered="#onUser" onMouseExited="#neUser" prefHeight="200.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 0;" visible="false">
-            <StackPane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" />
-            <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0">
+         <VBox fx:id="menu" alignment="CENTER" layoutX="960.0" layoutY="-175.0" onMouseExited="#neUser" prefHeight="200.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 0;" visible="false">
+            <StackPane mouseTransparent="true" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="50.0" prefWidth="320.0" />
+            <Pane mouseTransparent="true" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0">
                <Label layoutX="99.0" layoutY="17.0" onMouseClicked="#toEdit" text="Редактировать&#10;профиль" textAlignment="CENTER" textFill="#ff9700">
                   <font>
                      <Font name="Times New Roman Bold" size="18.0" />
@@ -947,7 +933,7 @@
                   </effect>
                </Label>
             </Pane>
-            <Pane onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 -1;">
+            <Pane mouseTransparent="true" onMouseEntered="#onNav" onMouseExited="#neNav" onMousePressed="#onPN" onMouseReleased="#nePN" prefHeight="75.0" prefWidth="320.0" style="-fx-border-color: gray; -fx-border-insets: -1 -1 0 -1;">
                <Label layoutX="125.0" layoutY="24.0" onMouseClicked="#toBegin" text="Выход" textAlignment="CENTER" textFill="#ff9700">
                   <font>
                      <Font name="Times New Roman Bold" size="24.0" />
@@ -985,6 +971,11 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="time_pat" layoutX="160.0" layoutY="98.0" text="12:00" textFill="#444444">
+               <font>
+                  <Font name="Times New Roman Italic" size="14.0" />
+               </font>
+            </Label>
          </Pane>
          <Pane fx:id="ernull" layoutX="10.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
             <Pane layoutX="37.0" prefHeight="41.0" prefWidth="127.0">
@@ -1000,6 +991,11 @@
             <Label layoutX="28.0" layoutY="41.0" prefHeight="50.0" prefWidth="146.0" text="Все поля должны быть заполнены!" textFill="#c14503" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="time_null" layoutX="160.0" layoutY="98.0" text="12:00" textFill="#444444">
+               <font>
+                  <Font name="Times New Roman Italic" size="14.0" />
                </font>
             </Label>
          </Pane>
@@ -1023,13 +1019,22 @@
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </Label>
             <Label layoutX="19.0" layoutY="98.0" prefWidth="190.0" text="Он скопирован в буфер обмена." textAlignment="CENTER" textFill="#c14503" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="time_gen" layoutX="185.0" layoutY="138.0" text="12:00" textFill="#444444">
+               <font>
+                  <Font name="Times New Roman Italic" size="14.0" />
+               </font>
+            </Label>
          </Pane>
+         <VBox fx:id="Notif" layoutX="30.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="440.0" prefWidth="228.0" spacing="20.0" />
       </Pane>
    </StackPane>
    <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="530.0" StackPane.alignment="BOTTOM_RIGHT">

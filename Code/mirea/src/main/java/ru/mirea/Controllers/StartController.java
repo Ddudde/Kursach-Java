@@ -1,17 +1,22 @@
 package ru.mirea.Controllers;
 
-import javafx.animation.*;
+import javafx.animation.KeyValue;
+import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -22,7 +27,7 @@ import ru.mirea.Start;
 import ru.mirea.data.User;
 import ru.mirea.data.UsersImpl;
 
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +57,6 @@ public class StartController extends ModelController{
 
     @FXML
     private Pane povpar;
-
-    @FXML
-    private Label sgerpar;
 
     @FXML
     private StackPane prilozh;
@@ -124,25 +126,37 @@ public class StartController extends ModelController{
             n.requestFocus();
     }
 
+    public void onEnterR(KeyEvent keyEvent)
+    {
+        if(keyEvent.getCode() == KeyCode.ENTER) onreg();
+    }
+
+    public void onEnterA(KeyEvent keyEvent) throws IOException {
+        if(keyEvent.getCode() == KeyCode.ENTER) onauth();
+    }
+
     public void toreg()
     {
+        destr_auth();
         login = false;
         reg.setVisible(true);
         rotate_this(rt_a, rt_r);
-        destr_auth();
         erpat.setVisible(false);
         ernull.setVisible(false);
+        if(erpat.getParent() != null) ((Pane)erpat.getParent()).getChildren().remove(erpat);
+        if(ernull.getParent() != null) ((Pane)ernull.getParent()).getChildren().remove(ernull);
     }
 
     public void toauth()
     {
+        destr_reg();
         login = true;
         auth.setVisible(true);
         rotate_this(rt_r, rt_a);
-        destr_reg();
         erpat.setVisible(false);
         ernull.setVisible(false);
-        gen.setVisible(false);
+        if(erpat.getParent() != null) ((Pane)erpat.getParent()).getChildren().remove(erpat);
+        if(ernull.getParent() != null) ((Pane)ernull.getParent()).getChildren().remove(ernull);
     }
 
     public void onreg()
@@ -168,6 +182,7 @@ public class StartController extends ModelController{
             user.setUsername(r_log.getText());
             user.setPassword(r_par.getText());
             user.setIcons(ico);
+            user.setSohr(1);
             usersImpl.addorsave(user);
             toauth();
         }
@@ -175,19 +190,7 @@ public class StartController extends ModelController{
 
     public void ranpar()
     {
-        String password = "";
-        String symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        for (int i = 0; i < 15; i++){
-            password += symbols.charAt((int)Math.floor(Math.random() * symbols.length()));
-        }
-        r_par.setText(password);
-        r_conf_par.setText(password);
-        sgerpar.setText(password);
-        gen.setVisible(true);
-        Clipboard clipboard = Clipboard.getSystemClipboard();
-        ClipboardContent content = new ClipboardContent();
-        content.putString(password);
-        clipboard.setContent(content);
+        ranpar(new PasswordField[]{r_par, r_conf_par});
     }
 
     public void onauth() throws IOException {

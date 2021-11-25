@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.media.MediaView?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <Pane cache="true" cacheHint="SPEED" prefHeight="1440.0" prefWidth="1280.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.StartController">
    <Pane fx:id="zagr" layoutX="340.0" layoutY="160.0" prefHeight="400.0" prefWidth="600.0" styleClass="auth" stylesheets="@../css/auth.css">
       <Pane layoutX="174.0" layoutY="14.0" prefHeight="72.0" prefWidth="253.0">
@@ -121,7 +107,7 @@
                            </InnerShadow>
                         </effect>
                      </PasswordField>
-                     <PasswordField fx:id="r_conf_par" layoutX="30.0" layoutY="250.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Повторение пароля">
+                     <PasswordField fx:id="r_conf_par" layoutX="30.0" layoutY="250.0" onKeyPressed="#onEnterR" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Повторение пароля">
                         <effect>
                            <InnerShadow blurType="GAUSSIAN" height="30.0" radius="14.5" width="30.0">
                               <color>
@@ -304,7 +290,7 @@
                            </InnerShadow>
                         </effect>
                      </TextField>
-                     <PasswordField fx:id="a_par" layoutX="31.0" layoutY="125.0" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль">
+                     <PasswordField fx:id="a_par" layoutX="31.0" layoutY="125.0" onKeyPressed="#onEnterA" onKeyReleased="#textch" prefHeight="50.0" prefWidth="300.0" promptText="Пароль">
                         <effect>
                            <InnerShadow blurType="GAUSSIAN" height="30.0" radius="14.5" width="30.0">
                               <color>
@@ -460,6 +446,11 @@
                <Font name="Times New Roman Bold" size="18.0" />
             </font>
          </Label>
+         <Label fx:id="time_pat" layoutX="160.0" layoutY="98.0" text="12:00" textFill="#444444">
+            <font>
+               <Font name="Times New Roman Italic" size="14.0" />
+            </font>
+         </Label>
       </Pane>
       <Pane fx:id="ernull" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false" StackPane.alignment="TOP_RIGHT">
          <StackPane.margin>
@@ -478,6 +469,11 @@
          <Label layoutX="28.0" layoutY="41.0" prefHeight="50.0" prefWidth="146.0" text="Все поля должны быть заполнены!" textFill="#c14503" wrapText="true">
             <font>
                <Font name="Times New Roman Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="time_null" layoutX="158.0" layoutY="98.0" text="12:00" textFill="#444444">
+            <font>
+               <Font name="Times New Roman Italic" size="14.0" />
             </font>
          </Label>
       </Pane>
@@ -504,12 +500,25 @@
             <font>
                <Font name="Times New Roman Bold" size="18.0" />
             </font>
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor>
          </Label>
          <Label layoutX="19.0" layoutY="98.0" prefWidth="190.0" text="Он скопирован в буфер обмена." textAlignment="CENTER" textFill="#c14503" wrapText="true">
             <font>
                <Font name="Times New Roman Bold" size="18.0" />
             </font>
          </Label>
+         <Label fx:id="time_gen" layoutX="185.0" layoutY="138.0" text="12:00" textFill="#444444">
+            <font>
+               <Font name="Times New Roman Italic" size="14.0" />
+            </font>
+         </Label>
       </Pane>
+      <VBox fx:id="Notif" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="440.0" prefWidth="228.0" spacing="20.0" StackPane.alignment="TOP_RIGHT">
+         <StackPane.margin>
+            <Insets right="30.0" top="20.0" />
+         </StackPane.margin>
+      </VBox>
    </StackPane>
 </Pane>

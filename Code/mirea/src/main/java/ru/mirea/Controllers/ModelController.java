@@ -4,61 +4,82 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.InnerShadow;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import ru.mirea.Start;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class ModelController{
 
     @FXML
-    Pane ernull;
+    protected Pane ernull;
 
     @FXML
-    Pane erpat;
+    protected Pane erpat;
 
     @FXML
-    Pane gen;
+    protected Pane gen;
 
     @FXML
-    public RadioButton ra1;
+    protected Label time_pat;
 
     @FXML
-    public RadioButton ra2;
+    protected Label time_null;
 
     @FXML
-    public RadioButton ra3;
+    protected Label time_gen;
 
-    public int ico = 0;
+    @FXML
+    protected Label sgerpar;
 
-    public final Interpolator inter = Interpolator.EASE_BOTH;
+    @FXML
+    protected RadioButton ra1;
 
-    public final ArrayList<String> list_nonlat = new ArrayList<>();
+    @FXML
+    protected RadioButton ra2;
 
-    public final ArrayList<String> list_null = new ArrayList<>();
+    @FXML
+    protected RadioButton ra3;
+
+    @FXML
+    protected VBox Notif;
+
+    protected int ico = 0;
+
+    protected final Interpolator inter = Interpolator.EASE_BOTH;
+
+    protected final ArrayList<String> list_nonlat = new ArrayList<>();
+
+    protected final ArrayList<String> list_null = new ArrayList<>();
+
+    protected final ArrayList<Pane> list_warn = new ArrayList<>();
 
     public void rad1()
     {
@@ -84,6 +105,7 @@ public class ModelController{
         if (text.getText().isEmpty())
         {
             if (!list_null.contains(text.getId())) add_null(text.getId());
+            if (list_nonlat.contains(text.getId())) rem_nonlat(text.getId());
         } else {
             rem_null(text.getId());
             if (Pattern.matches("[A-Za-z0-9]+", text.getText()))
@@ -91,11 +113,7 @@ public class ModelController{
             else {
                 if (!list_nonlat.contains(text.getId())) add_nonlat(text.getId());
             }
-            erpat.setVisible(!list_nonlat.isEmpty());
-            if(!list_nonlat.isEmpty()) gen.setVisible(false);
         }
-        ernull.setVisible(!list_null.isEmpty());
-        if(!list_null.isEmpty()) gen.setVisible(false);
     }
 
     public boolean getstat(TextField text)
@@ -104,8 +122,6 @@ public class ModelController{
         {
             if(text.getText().isEmpty()) {
                 add_null(text.getId());
-                ernull.setVisible(true);
-                gen.setVisible(false);
                 return false;
             }
             return true;
@@ -123,18 +139,25 @@ public class ModelController{
         kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",1), inter));
         kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",1), inter));
         played(kv, 100);
+        onWarn(ernull);
+        time_null.setText(new SimpleDateFormat("HH:mm").format(new Date()));
     }
 
     private void rem_null(String id)
     {
         list_null.remove(id);
-        TextField text = (TextField) Start.roots.get(id);
-        InnerShadow innerShadow = (InnerShadow) text.getEffect();
-        DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-        List<KeyValue> kv = new ArrayList<>();
-        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",0), inter));
-        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",0), inter));
-        played(kv, 100);
+        if(list_null.isEmpty()) {
+            neWarn(ernull);
+            if(!list_nonlat.contains(id)) {
+                TextField text = (TextField) Start.roots.get(id);
+                InnerShadow innerShadow = (InnerShadow) text.getEffect();
+                DropShadow dropShadow = (DropShadow) innerShadow.getInput();
+                List<KeyValue> kv = new ArrayList<>();
+                kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000", 0), inter));
+                kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000", 0), inter));
+                played(kv, 100);
+            }
+        }
     }
 
     private void add_nonlat(String id)
@@ -147,18 +170,79 @@ public class ModelController{
         kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",1), inter));
         kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",1), inter));
         played(kv, 100);
+        onWarn(erpat);
+        time_pat.setText(new SimpleDateFormat("HH:mm").format(new Date()));
     }
 
     private void rem_nonlat(String id)
     {
         list_nonlat.remove(id);
-        TextField text = (TextField) Start.roots.get(id);
-        InnerShadow innerShadow = (InnerShadow) text.getEffect();
-        DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-        List<KeyValue> kv = new ArrayList<>();
-        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",0), inter));
-        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",0), inter));
-        played(kv, 100);
+        if(list_nonlat.isEmpty()) {
+            neWarn(erpat);
+            if (!list_null.contains(id)) {
+                TextField text = (TextField) Start.roots.get(id);
+                InnerShadow innerShadow = (InnerShadow) text.getEffect();
+                DropShadow dropShadow = (DropShadow) innerShadow.getInput();
+                List<KeyValue> kv = new ArrayList<>();
+                kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000", 0), inter));
+                kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000", 0), inter));
+                played(kv, 100);
+            }
+        }
+    }
+
+    private void onWarn(Pane pane)
+    {
+        if(!pane.isVisible()) pane.setVisible(true);
+        if(pane.getParent() != Notif){
+            if(pane.getParent() != null) ((Pane)pane.getParent()).getChildren().remove(pane);
+            pane.setTranslateY(-175);
+            pane.setOpacity(0);
+            Notif.getChildren().add(pane);
+            List<KeyValue> kv = new ArrayList<>();
+            kv.add(new KeyValue(pane.translateYProperty(), 0, inter));
+            kv.add(new KeyValue(pane.opacityProperty(), 1, inter));
+            played(kv, 500);
+        }
+    }
+
+    private void neWarn(Pane pane)
+    {
+        if(pane.isVisible()) {
+            pane.visibleProperty().addListener(this::changed);
+            List<KeyValue> kv = new ArrayList<>();
+            kv.add(new KeyValue(pane.translateYProperty(), -175, inter));
+            kv.add(new KeyValue(pane.opacityProperty(), 0, inter));
+            kv.add(new KeyValue(pane.visibleProperty(), false, inter));
+            played(kv, 500);
+        }
+    }
+
+    private void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) {
+        if(!new_val) {
+            Pane pane = (Pane)((BooleanProperty) ov).getBean();
+            Notif.getChildren().remove(pane);
+            pane.visibleProperty().removeListener(this::changed);
+        }
+    }
+
+    public void ranpar(PasswordField[] passFields)
+    {
+        StringBuilder password = new StringBuilder();
+        String symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (int i = 0; i < 15; i++){
+            password.append(symbols.charAt((int) Math.floor(Math.random() * symbols.length())));
+        }
+        for(PasswordField text : passFields){
+            text.setText(password.toString());
+        }
+        sgerpar.setText(password.toString());
+        onWarn(gen);
+        time_gen.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(password.toString());
+        clipboard.setContent(content);
     }
 
     public void onBut(MouseEvent mouseEvent)
