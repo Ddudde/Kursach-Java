@@ -29,6 +29,9 @@ public class User {
     @Column(name = "shr")
     private int sohr;
 
+    @Transient
+    private boolean ch_u = false;
+
     public boolean conf_auth(String pass)
     {
         return password.equals(pass);
@@ -43,5 +46,11 @@ public class User {
                 ", icons=" + icons +
                 ", sohr=" + sohr +
                 '}';
+    }
+
+    public String toSave() {
+        StringBuilder res = new StringBuilder();
+        res.append(id).append("\n").append(username).append("\n").append(password).append("\n").append(icons).append("\n").append(sohr);
+        return res.toString();
     }
 }

@@ -1,9 +1,6 @@
 package ru.mirea.Controllers;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -27,8 +24,10 @@ import ru.mirea.Start;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,6 +47,9 @@ public class ModelController{
     protected Pane gen;
 
     @FXML
+    protected Pane net;
+
+    @FXML
     protected Label time_pat;
 
     @FXML
@@ -55,6 +57,9 @@ public class ModelController{
 
     @FXML
     protected Label time_gen;
+
+    @FXML
+    protected Label time_inet;
 
     @FXML
     protected Label sgerpar;
@@ -79,7 +84,29 @@ public class ModelController{
 
     protected final ArrayList<String> list_null = new ArrayList<>();
 
-    protected final ArrayList<Pane> list_warn = new ArrayList<>();
+    public static Boolean inet = false;
+
+    public void init()
+    {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), this::ping));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    private void ping(ActionEvent actionEvent)
+    {
+        if(ModelController.inet != pingh("https://yandex.ru"))
+        {
+            ModelController.inet = !ModelController.inet;
+            if(ModelController.inet) Start.agree_with_bd();
+        }
+        if(ModelController.inet)
+            neWarn(net);
+        else {
+            time_inet.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+            onWarn(net);
+        }
+    }
 
     public void rad1()
     {
@@ -116,6 +143,19 @@ public class ModelController{
         }
     }
 
+    public boolean pingh(String host) {
+        try {
+            URL siteURL = new URL(host);
+            HttpURLConnection connection = (HttpURLConnection) siteURL.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(1000);
+            connection.connect();
+            return connection.getResponseCode() == 200;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean getstat(TextField text)
     {
         if(!list_null.contains(text.getId()) && !list_nonlat.contains(text.getId()))
@@ -132,13 +172,7 @@ public class ModelController{
     private void add_null(String id)
     {
         list_null.add(id);
-        TextField text = (TextField) Start.roots.get(id);
-        InnerShadow innerShadow = (InnerShadow) text.getEffect();
-        DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-        List<KeyValue> kv = new ArrayList<>();
-        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",1), inter));
-        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",1), inter));
-        played(kv, 100);
+        redfield((TextField) Start.roots.get(id), 1);
         onWarn(ernull);
         time_null.setText(new SimpleDateFormat("HH:mm").format(new Date()));
     }
@@ -148,28 +182,14 @@ public class ModelController{
         list_null.remove(id);
         if(list_null.isEmpty()) {
             neWarn(ernull);
-            if(!list_nonlat.contains(id)) {
-                TextField text = (TextField) Start.roots.get(id);
-                InnerShadow innerShadow = (InnerShadow) text.getEffect();
-                DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-                List<KeyValue> kv = new ArrayList<>();
-                kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000", 0), inter));
-                kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000", 0), inter));
-                played(kv, 100);
-            }
+            if(!list_nonlat.contains(id)) redfield((TextField) Start.roots.get(id), 0);
         }
     }
 
     private void add_nonlat(String id)
     {
         list_nonlat.add(id);
-        TextField text = (TextField) Start.roots.get(id);
-        InnerShadow innerShadow = (InnerShadow) text.getEffect();
-        DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-        List<KeyValue> kv = new ArrayList<>();
-        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",1), inter));
-        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",1), inter));
-        played(kv, 100);
+        redfield((TextField) Start.roots.get(id), 1);
         onWarn(erpat);
         time_pat.setText(new SimpleDateFormat("HH:mm").format(new Date()));
     }
@@ -179,19 +199,21 @@ public class ModelController{
         list_nonlat.remove(id);
         if(list_nonlat.isEmpty()) {
             neWarn(erpat);
-            if (!list_null.contains(id)) {
-                TextField text = (TextField) Start.roots.get(id);
-                InnerShadow innerShadow = (InnerShadow) text.getEffect();
-                DropShadow dropShadow = (DropShadow) innerShadow.getInput();
-                List<KeyValue> kv = new ArrayList<>();
-                kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000", 0), inter));
-                kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000", 0), inter));
-                played(kv, 100);
-            }
+            if (!list_null.contains(id)) redfield((TextField) Start.roots.get(id), 0);
         }
     }
 
-    private void onWarn(Pane pane)
+    private void redfield(TextField text, double opacity)
+    {
+        InnerShadow innerShadow = (InnerShadow) text.getEffect();
+        DropShadow dropShadow = (DropShadow) innerShadow.getInput();
+        List<KeyValue> kv = new ArrayList<>();
+        kv.add(new KeyValue(innerShadow.colorProperty(), Color.web("#ff0000",opacity), inter));
+        kv.add(new KeyValue(dropShadow.colorProperty(), Color.web("#ff0000",opacity), inter));
+        played(kv, 100);
+    }
+
+    public void onWarn(Pane pane)
     {
         if(!pane.isVisible()) pane.setVisible(true);
         if(pane.getParent() != Notif){
@@ -206,7 +228,7 @@ public class ModelController{
         }
     }
 
-    private void neWarn(Pane pane)
+    public void neWarn(Pane pane)
     {
         if(pane.isVisible()) {
             pane.visibleProperty().addListener(this::changed);

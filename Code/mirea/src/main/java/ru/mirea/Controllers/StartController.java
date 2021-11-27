@@ -96,8 +96,6 @@ public class StartController extends ModelController{
         zagr.setVisible(false);
         prilozh.setVisible(true);
         Platform.runLater(this::run);
-        down();
-        up();
         usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
         caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
@@ -107,6 +105,7 @@ public class StartController extends ModelController{
         rt_r.setAxis(Rotate.X_AXIS);
         auth.getScene().addEventHandler(KeyEvent.KEY_RELEASED, this::caps);
         scrpan.vvalueProperty().addListener(this::changed);
+        super.init();
     }
 
     private void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
@@ -122,8 +121,7 @@ public class StartController extends ModelController{
 
     private void run()
     {
-        for(Node n : Start.root.getChildrenUnmodifiable())
-            n.requestFocus();
+        for(Node n : Start.primStage.getScene().getRoot().getChildrenUnmodifiable()) n.requestFocus();
     }
 
     public void onEnterR(KeyEvent keyEvent)
@@ -183,6 +181,7 @@ public class StartController extends ModelController{
             user.setPassword(r_par.getText());
             user.setIcons(ico);
             user.setSohr(1);
+            if(!ModelController.inet) Start.off_reg.add(r_log.getText());
             usersImpl.addorsave(user);
             toauth();
         }
@@ -205,7 +204,8 @@ public class StartController extends ModelController{
             }else{
                 Start.usename = a_log.getText();
                 Start.close_start();
-                Start.show_project();
+                Start.start_scene("/fxml/project.fxml");
+                ((ProjController)Start.loader.getController()).init();
             }
         }
     }

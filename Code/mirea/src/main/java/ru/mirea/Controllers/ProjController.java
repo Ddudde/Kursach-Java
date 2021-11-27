@@ -165,6 +165,7 @@ public class ProjController extends ModelController{
             view3d.getChildren().add(scene3D.getScene());
         }
         user.setSohr(id);
+        if(!ModelController.inet) Start.off_save.add(user.getUsername());
         usersImpl.addorsave(user);
     }
 
@@ -344,6 +345,8 @@ public class ProjController extends ModelController{
                 return;
             }
             logzan.setVisible(false);
+            if(!ModelController.inet) Start.off_replace.addAll(List.of(Start.usename, log.getText()));
+            UsersImpl.map.remove(Start.usename);
             Start.usename = log.getText();
             user.setUsername(log.getText());
             user.setPassword(par.getText());
@@ -358,7 +361,7 @@ public class ProjController extends ModelController{
     public void toBegin() throws IOException {
         Start.usename = null;
         Start.close_project();
-        Start.show_start();
+        Start.start_scene("/fxml/start.fxml");
         Start.starts();
     }
 
