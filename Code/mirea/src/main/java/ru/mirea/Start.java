@@ -11,6 +11,7 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lombok.extern.slf4j.Slf4j;
+import ru.mirea.Controllers.ModelController;
 import ru.mirea.Controllers.StartController;
 import ru.mirea.data.User;
 import ru.mirea.data.UsersImpl;
@@ -22,6 +23,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Slf4j
@@ -60,6 +62,18 @@ public class Start extends Application {
         //((ProjController)loader.getController()).init();
     }
 
+    private static List<Integer> cont(List<String> list, String log)
+    {
+        List<Integer> mas = new ArrayList<>();
+        int id = 1;
+        for(String str : list)
+        {
+            if (Objects.equals(str, log)) mas.add(id);
+            id++;
+        }
+        return mas;
+    }
+
     public static void start_scene(String path) throws IOException {
         loader = new FXMLLoader();
         loader.setLocation(Start.class.getResource(path));
@@ -93,27 +107,44 @@ public class Start extends Application {
         UsersImpl usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
         int id = 0;
         Map<String, User> map = new HashMap<>();
+        Map<String, User> map1 = new HashMap<>();
         User user;
         List<String> on_reg = new ArrayList<>();
         for(String log : off_reg) {
             user = UsersImpl.map.get(log);
             if(usersImpl.getuser(log) == null)
             {
-                System.out.println("Reg! " + log);
                 usersImpl.addorsave(user);
                 on_reg.add(user.getUsername());
             }
         }
         user = null;
+        String lg = null;
+        for(int i = 0; i < off_replace.size(); i++) {
+            String log = off_replace.get(i);
+            if(lg == null) {
+                lg = log;
+                continue;
+            }
+            if(log == null) break;
+            List<Integer> list = cont(off_replace, log);
+            boolean mod = list.get(0) % 2 == 0;
+            boolean rem = false;
+            for(int df : list)
+            {
+                if(mod && !(df % 2 == 0))
+                {
+                    Collections.replaceAll(off_replace, log, lg);
+                    rem = true;
+                }
+            }
+            lg = off_replace.get(i);
+            while (off_replace.indexOf(lg) != off_replace.lastIndexOf(lg) && rem) off_replace.remove(lg);
+        }
         for(String log : off_replace) {
-            System.out.println(log);
             switch (id) {
                 case 0 -> {
-                    System.out.println("init1 " + !off_reg.contains(log) + " " + log);
-                    System.out.println("init2 " + on_reg.contains(log) + " " + log);
-                    if(!off_reg.contains(log) || on_reg.contains(log)) {
-                        user = usersImpl.getuser(log);
-                    }
+                    if(!off_reg.contains(log) || on_reg.contains(log)) user = usersImpl.getuser(log);
                     if(user == null) {
                         if (map.containsKey(log))
                             user = map.get(log);
@@ -124,15 +155,17 @@ public class Start extends Application {
                 case 1 -> {
                     User user1 = UsersImpl.map.get(log);
                     if(user1 != null) {
+                        user.setId(0);
                         user.setCh_u(Objects.equals(user.getUsername(), user1.getUsername()));
                         user.setId(user1.getId());
+                        String log1 = user.getUsername();
                         user.setUsername(user1.getUsername());
                         user.setPassword(user1.getPassword());
                         user.setIcons(user1.getIcons());
                         user.setSohr(user1.getSohr());
                         map.put(log, user);
-                    } //else user.setUsername(log);
-                    //map.put(log, user);
+                        map1.put(log1, user);
+                    }
                     id = 0;
                     user = null;
                     continue;
@@ -140,19 +173,81 @@ public class Start extends Application {
             }
             id++;
         }
-        for(User use : map.values()) System.out.println(use);
+        ModelController controller = loader.getController();
+        for(String log : off_reg) {
+            if (off_reg.contains(log) && !on_reg.contains(log) && !cont(map1, log)) {
+                controller.neWarn(controller.ernull);
+                controller.neWarn(controller.erpat);
+                controller.neWarn(controller.gen);
+                controller.time_reg.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+                controller.onWarn(controller.net_reg);
+                controller.setPer_reg(log);
+                break;
+            }
+        }
+        for(Map.Entry<String, User> entry : map1.entrySet()) {
+            User us = entry.getValue();
+            if (usersImpl.getuser(us.getUsername()) != null) {
+                if(!us.isCh_u()) {
+                    controller.neWarn(controller.ernull);
+                    controller.neWarn(controller.erpat);
+                    controller.neWarn(controller.gen);
+                    map1.remove(entry.getKey());
+                    controller.time_rep.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+                    controller.onWarn(controller.net_rep);
+                    controller.setPer_rep(us.getUsername());
+                    break;
+                } else {
+                    off_save.add(entry.getKey());
+                    map1.remove(entry.getKey());
+                }
+            }
+        }
+        for(Map.Entry<String, User> entry : map1.entrySet()) {
+            User us = entry.getValue();
+            if (usersImpl.getuser(us.getUsername()) == null)
+            {
+                if(!us.isCh_u()) {
+                    User us1 = usersImpl.getuser(entry.getKey());
+                    if(us1 != null)
+                    {
+                        us1.setUsername(us.getUsername());
+                        us1.setPassword(us.getPassword());
+                        us1.setIcons(us.getIcons());
+                        us1.setSohr(us.getSohr());
+                        usersImpl.addorsave(us1);
+                    } else usersImpl.addorsave(us);
+                    map1.remove(entry.getKey());
+                }
+            }
+        }
+        off_replace.clear();
+        for(Map.Entry<String, User> entry : map1.entrySet()) {
+            off_replace.addAll(List.of(entry.getKey(), entry.getValue().getUsername()));
+        }
         for(String log : off_save) {
-            User user1 = UsersImpl.map.get(log);
+            User user1 = usersImpl.getuser(log);
             if(map.containsKey(log))
                 user = map.get(log);
             else
                 user = user1 != null ? user1 : usersImpl.getuser(log);
-            user.setSohr(user1.getSohr());
+            user1.setSohr(user.getSohr());
+            usersImpl.addorsave(user1);
         }
-        System.out.println("Print!");
-        for(User use : map.values()) System.out.println(use);
-        for(String log : off_reg) if(off_reg.contains(log) && !on_reg.contains(log) && !map.containsKey(log)) System.out.println("Reg nik exists " + log);
-        for(User us : map.values()) if(usersImpl.getuser(us.getUsername()) != null && !us.isCh_u()) System.out.println("Replace nik exists " + us.getUsername());
+        off_save.clear();
+    }
+
+    private static boolean cont(Map<String, User> map, String log)
+    {
+        boolean a = false;
+        for(User user : map.values())
+        {
+            if (Objects.equals(user.getUsername(), log)) {
+                a = true;
+                break;
+            }
+        }
+        return a;
     }
 
     private void load_commands()
@@ -161,9 +256,7 @@ public class Start extends Application {
             int id = 0;
             for(String str : Files.readAllLines(Paths.get(path + "\\commands"), StandardCharsets.UTF_8))
             {
-                System.out.println(str);
                 str = str.replace("[", "").replace("]", "");
-                System.out.println(str);
                 if(str.isEmpty())
                 {
                     id++;

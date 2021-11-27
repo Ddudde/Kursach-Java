@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import ru.mirea.Start;
+import ru.mirea.data.User;
 
 import java.awt.*;
 import java.io.IOException;
@@ -38,16 +39,22 @@ import java.util.regex.Pattern;
 public class ModelController{
 
     @FXML
-    protected Pane ernull;
+    public Pane ernull;
 
     @FXML
-    protected Pane erpat;
+    public Pane erpat;
 
     @FXML
-    protected Pane gen;
+    public Pane gen;
 
     @FXML
     protected Pane net;
+
+    @FXML
+    public Pane net_reg;
+
+    @FXML
+    public Pane net_rep;
 
     @FXML
     protected Label time_pat;
@@ -60,6 +67,12 @@ public class ModelController{
 
     @FXML
     protected Label time_inet;
+
+    @FXML
+    public Label time_reg;
+
+    @FXML
+    public Label time_rep;
 
     @FXML
     protected Label sgerpar;
@@ -78,6 +91,10 @@ public class ModelController{
 
     protected int ico = 0;
 
+    protected String per_reg;
+
+    protected String per_rep;
+
     protected final Interpolator inter = Interpolator.EASE_BOTH;
 
     protected final ArrayList<String> list_nonlat = new ArrayList<>();
@@ -88,7 +105,7 @@ public class ModelController{
 
     public void init()
     {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), this::ping));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), this::ping));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -124,6 +141,68 @@ public class ModelController{
     {
         ico = 2;
         ra3.setSelected(true);
+    }
+
+    public String getPer_reg() {
+        return per_reg;
+    }
+
+    public void setPer_reg(String per_reg) {
+        this.per_reg = per_reg;
+    }
+
+    public String getPer_rep() {
+        return per_rep;
+    }
+
+    public void setPer_rep(String per_rep) {
+        this.per_rep = per_rep;
+    }
+
+    public void onNREG() throws IOException {
+        if(this.getClass().getSimpleName().equals("StartController"))
+        {
+            StartController startController = (StartController) this;
+            User user = startController.usersImpl.getuser(per_reg);
+            startController.toreg(user);
+            startController.down();
+        } else {
+            ProjController projController = (ProjController) this;
+            projController.toBegin();
+            StartController startController = Start.loader.getController();
+            startController.neWarn(startController.ernull);
+            startController.neWarn(startController.erpat);
+            startController.neWarn(startController.gen);
+            User user = startController.usersImpl.getuser(per_reg);
+            startController.time_reg.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+            startController.onWarn(startController.net_reg);
+            startController.setPer_reg(per_reg);
+            startController.toreg(user);
+            startController.down();
+        }
+    }
+
+    public void onNREP() throws IOException {
+        Start.usename = per_rep;
+        if(this.getClass().getSimpleName().equals("StartController"))
+        {
+            Start.close_start();
+            Start.start_scene("/fxml/project.fxml");
+            ProjController projController = Start.loader.getController();
+            projController.neWarn(projController.ernull);
+            projController.neWarn(projController.erpat);
+            projController.neWarn(projController.gen);
+            User user = projController.usersImpl.getuser(Start.usename);
+            projController.init();
+            projController.time_rep.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+            projController.onWarn(projController.net_rep);
+            projController.setPer_rep(per_reg);
+            projController.toEdit(user);
+        } else {
+            ProjController projController = (ProjController) this;
+            User user = projController.usersImpl.getuser(Start.usename);
+            projController.toEdit(user);
+        }
     }
 
     public void textch(KeyEvent keyEvent)

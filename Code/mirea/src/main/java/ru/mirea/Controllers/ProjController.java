@@ -36,7 +36,7 @@ public class ProjController extends ModelController{
 
     private int id = 1;
 
-    private UsersImpl usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
+    public UsersImpl usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
 
     @FXML
     private Label usern;
@@ -98,12 +98,16 @@ public class ProjController extends ModelController{
 
     private int node = 0;
 
+    private User rep_us;
+
     public void init()
     {
         user = usersImpl.getuser(Start.usename);
         if(user != null)
         {
             usern.setText(Start.usename);
+            log.setText(Start.usename);
+            par.setText(user.getPassword());
             set_ico();
             if(user.getSohr() > 1) next_id = user.getSohr();
         }
@@ -117,6 +121,7 @@ public class ProjController extends ModelController{
         p_edit.getScene().addEventHandler(KeyEvent.KEY_RELEASED, this::caps);
         toMain();
         if(next_id == -1) onNavV();
+        super.init();
     }
 
     public void browse_3535() throws URISyntaxException, IOException {
@@ -229,6 +234,14 @@ public class ProjController extends ModelController{
     {
         upd_str();
         edit.setVisible(true);
+    }
+
+    public void toEdit(User user)
+    {
+        upd_str();
+        edit.setVisible(true);
+        logzan.setVisible(true);
+        rep_us = user;
     }
 
     public void onEnter(KeyEvent keyEvent) {
@@ -348,13 +361,25 @@ public class ProjController extends ModelController{
             if(!ModelController.inet) Start.off_replace.addAll(List.of(Start.usename, log.getText()));
             UsersImpl.map.remove(Start.usename);
             Start.usename = log.getText();
-            user.setUsername(log.getText());
-            user.setPassword(par.getText());
-            user.setIcons(ico);
-            usersImpl.addorsave(user);
-            usern.setText(Start.usename);
-            set_ico();
-            toMain();
+            if(rep_us == null) {
+                user.setUsername(log.getText());
+                user.setPassword(par.getText());
+                user.setIcons(ico);
+                usersImpl.addorsave(user);
+                usern.setText(Start.usename);
+                set_ico();
+                toMain();
+            } else {
+                rep_us.setUsername(log.getText());
+                rep_us.setPassword(par.getText());
+                rep_us.setIcons(ico);
+                usersImpl.addorsave(rep_us);
+                usern.setText(Start.usename);
+                set_ico();
+                toMain();
+                neWarn(net_rep);
+                rep_us = null;
+            }
         }
     }
 

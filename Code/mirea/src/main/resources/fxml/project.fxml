@@ -1035,6 +1035,146 @@
             </Label>
          </Pane>
          <VBox fx:id="Notif" layoutX="30.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="440.0" prefWidth="228.0" spacing="20.0" />
+         <Pane fx:id="net" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="230.0" prefWidth="228.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <children>
+               <Pane layoutX="51.0" prefHeight="41.0" prefWidth="127.0">
+                  <children>
+                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../img/warning.png" />
+                        </image>
+                     </ImageView>
+                     <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                        <font>
+                           <Font name="Times New Roman Bold" size="18.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+               <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Проблемы с подключением к интернету. Все действия будут сохранены. При возобновлении подключения, возможно понадобится корректировка данных." textFill="#c14503" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="time_inet" layoutX="185.0" layoutY="205.0" text="12:00" textFill="#444444">
+                  <font>
+                     <Font name="Times New Roman Italic" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+         <Pane fx:id="net_reg" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="228.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <children>
+               <Pane layoutX="51.0" prefHeight="41.0" prefWidth="127.0">
+                  <children>
+                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../img/warning.png" />
+                        </image>
+                     </ImageView>
+                     <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                        <font>
+                           <Font name="Times New Roman Bold" size="18.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+               <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету возобновлено. Обнаружились проблемы в данных при регистрации вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="time_reg" layoutX="185.0" layoutY="235.0" text="12:00" textFill="#444444">
+                  <font>
+                     <Font name="Times New Roman Italic" size="14.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#onNREG" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Исправить!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </children>
+         </Pane>
+         <Pane fx:id="net_rep" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="228.0" styleClass="auth" stylesheets="@../css/auth.css" visible="false">
+            <children>
+               <Pane layoutX="51.0" prefHeight="41.0" prefWidth="127.0">
+                  <children>
+                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../img/warning.png" />
+                        </image>
+                     </ImageView>
+                     <Label layoutX="33.0" layoutY="11.0" text="Внимание!" textFill="#c14503">
+                        <font>
+                           <Font name="Times New Roman Bold" size="18.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+               <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету возобновлено. Обнаружились проблемы в данных при изменении вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
+                  <font>
+                     <Font name="Times New Roman Bold" size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="time_rep" layoutX="185.0" layoutY="235.0" text="12:00" textFill="#444444">
+                  <font>
+                     <Font name="Times New Roman Italic" size="14.0" />
+                  </font>
+               </Label>
+               <Button defaultButton="true" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#onNREP" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+                  <font>
+                     <Font name="Times New Roman Bold" size="24.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <graphic>
+                     <Label text="Исправить!" textFill="WHITE">
+                        <font>
+                           <Font name="Times New Roman Bold" size="24.0" />
+                        </font>
+                        <effect>
+                           <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                        </effect>
+                     </Label>
+                  </graphic>
+                  <effect>
+                     <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                        <input>
+                           <Glow level="0.0" />
+                        </input>
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            </children>
+         </Pane>
       </Pane>
    </StackPane>
    <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="530.0" StackPane.alignment="BOTTOM_RIGHT">

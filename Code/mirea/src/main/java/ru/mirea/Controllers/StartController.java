@@ -90,7 +90,9 @@ public class StartController extends ModelController{
 
     private RotateTransition rt_r;
 
-    private UsersImpl usersImpl;
+    public UsersImpl usersImpl;
+
+    private User reg_us;
 
     public void init() {
         zagr.setVisible(false);
@@ -131,6 +133,29 @@ public class StartController extends ModelController{
 
     public void onEnterA(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() == KeyCode.ENTER) onauth();
+    }
+
+    public void toreg(User user)
+    {
+        destr_auth();
+        login = false;
+        reg.setVisible(true);
+        rotate_this(rt_a, rt_r);
+        erpat.setVisible(false);
+        ernull.setVisible(false);
+        if(erpat.getParent() != null) ((Pane)erpat.getParent()).getChildren().remove(erpat);
+        if(ernull.getParent() != null) ((Pane)ernull.getParent()).getChildren().remove(ernull);
+        logzan.setVisible(true);
+        reg_us = user;
+        r_log.setText(user.getUsername());
+        r_par.setText(user.getPassword());
+        r_conf_par.setText(user.getPassword());
+        ico = user.getIcons();
+        switch (ico) {
+            case 0 -> rad1();
+            case 1 -> rad2();
+            case 2 -> rad3();
+        }
     }
 
     public void toreg()
@@ -176,14 +201,25 @@ public class StartController extends ModelController{
                 return;
             }
             povpar.setVisible(false);
-            User user = new User();
-            user.setUsername(r_log.getText());
-            user.setPassword(r_par.getText());
-            user.setIcons(ico);
-            user.setSohr(1);
-            if(!ModelController.inet) Start.off_reg.add(r_log.getText());
-            usersImpl.addorsave(user);
-            toauth();
+            if(reg_us == null) {
+                User user = new User();
+                user.setUsername(r_log.getText());
+                user.setPassword(r_par.getText());
+                user.setIcons(ico);
+                user.setSohr(1);
+                if(!ModelController.inet) Start.off_reg.add(r_log.getText());
+                usersImpl.addorsave(user);
+                toauth();
+            } else {
+                if(!ModelController.inet) Start.off_reg.remove(reg_us.getUsername());
+                reg_us.setUsername(r_log.getText());
+                reg_us.setPassword(r_par.getText());
+                reg_us.setIcons(ico);
+                usersImpl.addorsave(reg_us);
+                toauth();
+                neWarn(net_reg);
+                reg_us = null;
+            }
         }
     }
 
