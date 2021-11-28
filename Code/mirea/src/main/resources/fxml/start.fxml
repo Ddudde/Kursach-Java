@@ -10,28 +10,156 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <Pane cache="true" cacheHint="SPEED" prefHeight="1440.0" prefWidth="1280.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.Controllers.StartController">
-   <Pane fx:id="zagr" layoutX="340.0" layoutY="160.0" prefHeight="400.0" prefWidth="600.0" styleClass="auth" stylesheets="@../css/auth.css">
-      <Pane layoutX="174.0" layoutY="14.0" prefHeight="72.0" prefWidth="253.0">
-         <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../img/warning.png" />
-         </ImageView>
-         <Label layoutX="61.0" layoutY="16.0" text="Внимание!" textFill="#c14503">
-            <font>
-               <Font name="Times New Roman Bold" size="36.0" />
-            </font>
-         </Label>
-      </Pane>
-      <Label layoutX="34.0" layoutY="293.0" prefHeight="93.0" prefWidth="532.0" text="Происходит загрузка Spring! Примерная скорость загрузки ~ 10 - 30 секунд." textAlignment="CENTER" textFill="#c14503" wrapText="true">
-         <font>
-            <Font name="Times New Roman Bold" size="24.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="169.0" fitWidth="275.0" layoutX="216.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../img/oval.gif" />
-      </ImageView>
+   <Pane fx:id="zagr" prefHeight="720.0" prefWidth="1280.0">
+      <children>
+         <HBox fx:id="logos" alignment="CENTER" layoutX="-400.0" layoutY="500.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="2000.0" scaleX="0.55" scaleY="0.55" spacing="10.0">
+            <children>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/IntelliJ-IDEA.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/postgresql-logo.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/heidi-sql.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="138.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/javafx_logo.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/gradle.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/spring.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/Hibernate.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="46.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/launch4j.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/Lombok.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+               <ImageView fitHeight="85.0" fitWidth="200.0" opacity="0.0">
+                  <image>
+                     <Image url="@../img/logo1/slf4j-logo.png" />
+                  </image>
+                  <effect>
+                     <Glow level="0.0">
+                        <input>
+                           <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0" />
+                        </input>
+                     </Glow>
+                  </effect>
+               </ImageView>
+            </children>
+         </HBox>
+         <Pane layoutX="340.0" layoutY="72.0" prefHeight="400.0" prefWidth="600.0" styleClass="auth" stylesheets="@../css/auth.css">
+            <Pane layoutX="174.0" layoutY="14.0" prefHeight="72.0" prefWidth="253.0">
+               <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../img/warning.png" />
+               </ImageView>
+               <Label layoutX="61.0" layoutY="16.0" text="Внимание!" textFill="#c14503">
+                  <font>
+                     <Font name="Times New Roman Bold" size="36.0" />
+                  </font>
+               </Label>
+            </Pane>
+            <Label layoutX="34.0" layoutY="293.0" prefHeight="93.0" prefWidth="532.0" text="Происходит загрузка Spring! Примерная скорость загрузки ~ 10 - 30 секунд." textAlignment="CENTER" textFill="#c14503" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="169.0" fitWidth="275.0" layoutX="216.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../img/oval.gif" />
+            </ImageView>
+         </Pane>
+      </children>
    </Pane>
    <StackPane fx:id="prilozh" alignment="TOP_CENTER" cache="true" cacheHint="SPEED" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #242424;" visible="false">
-      <ScrollPane fx:id="scrpan" cache="true" cacheHint="SPEED" fitToWidth="true" prefHeight="1440.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+      <ScrollPane fx:id="scrpan" cache="true" cacheHint="SPEED" fitToWidth="true" focusTraversable="false" prefHeight="1440.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
          <StackPane alignment="TOP_CENTER" cache="true" cacheHint="SPEED" prefHeight="1440.0" prefWidth="1280.0" style="-fx-background-color: #242424;">
             <Pane cache="true" cacheHint="SPEED" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="720.0" prefWidth="1265.0" StackPane.alignment="TOP_CENTER">
                <MediaView fx:id="medWiu" cacheHint="SPEED" fitHeight="720.0" fitWidth="1265.0" pickOnBounds="true" preserveRatio="false" smooth="false">
@@ -372,32 +500,6 @@
             </Pane>
          </StackPane>
       </ScrollPane>
-      <Pane fx:id="up" accessibleRole="BUTTON" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#up" onMouseEntered="#onUp" onMouseExited="#neUp" onMousePressed="#onPU" onMouseReleased="#nePU" prefHeight="60.0" prefWidth="60.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
-         <StackPane.margin>
-            <Insets bottom="100.0" right="60.0" />
-         </StackPane.margin>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../img/up.png" />
-         </ImageView>
-         <effect>
-            <Glow level="0.0">
-               <input>
-                  <DropShadow blurType="GAUSSIAN" height="10.0" offsetX="5.0" offsetY="5.0" radius="4.5" width="10.0">
-                     <input>
-                        <InnerShadow height="100.0" radius="49.5" width="100.0">
-                           <color>
-                              <Color opacity="0.0" />
-                           </color>
-                        </InnerShadow>
-                     </input>
-                  </DropShadow>
-               </input>
-            </Glow>
-         </effect>
-      </Pane>
       <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="560.0" StackPane.alignment="BOTTOM_RIGHT">
          <StackPane.margin>
             <Insets bottom="20.0" right="100.0" />
@@ -567,7 +669,7 @@
                   </Label>
                </children>
             </Pane>
-            <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету возобновлено. Обнаружились проблемы в данных при регистрации вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
+            <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету было возобновлено. Обнаружены проблемы данных при регистрации вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
@@ -577,7 +679,35 @@
                   <Font name="Times New Roman Italic" size="14.0" />
                </font>
             </Label>
-            <Button defaultButton="true" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#onNREG" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+            <Button defaultButton="true" layoutX="14.0" layoutY="190.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#onNREG" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" prefHeight="35.0" stylesheets="@../css/start.css" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                     <input>
+                        <Glow level="0.0" />
+                     </input>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <graphic>
+                  <Label text="Исправить!" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                     </effect>
+                  </Label>
+               </graphic>
+            </Button>
+            <Button defaultButton="true" layoutX="120.0" layoutY="190.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#neNREG" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" prefHeight="35.0" prefWidth="96.0" stylesheets="@../css/start.css" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="24.0" />
                </font>
@@ -585,9 +715,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <Label text="Исправить!" textFill="WHITE">
+                  <Label text="Удалить!" textFill="WHITE">
                      <font>
-                        <Font name="Times New Roman Bold" size="24.0" />
+                        <Font name="Times New Roman Bold" size="12.0" />
                      </font>
                      <effect>
                         <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
@@ -626,7 +756,7 @@
                   </Label>
                </children>
             </Pane>
-            <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету возобновлено. Обнаружились проблемы в данных при изменении вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
+            <Label layoutX="19.0" layoutY="41.0" prefWidth="190.0" text="Подключение к интернету было возобновлено. Обнаружены проблемы данных при изменении вашего профиля. Необходима коррекция." textFill="#c14503" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
@@ -636,7 +766,35 @@
                   <Font name="Times New Roman Italic" size="14.0" />
                </font>
             </Label>
-            <Button defaultButton="true" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#onNREP" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" stylesheets="@../css/start.css" textFill="WHITE">
+            <Button defaultButton="true" layoutX="14.0" layoutY="190.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#onNREP" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" prefHeight="35.0" stylesheets="@../css/start.css" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="1.0" offsetY="-5.0" radius="0.0" width="0.0">
+                     <input>
+                        <Glow level="0.0" />
+                     </input>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <graphic>
+                  <Label text="Исправить!" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
+                     </effect>
+                  </Label>
+               </graphic>
+            </Button>
+            <Button defaultButton="true" layoutX="120.0" layoutY="190.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#neNREP" onMouseEntered="#onBut" onMouseExited="#neBut" onMousePressed="#onPRB" onMouseReleased="#nePRB" prefHeight="35.0" prefWidth="96.0" stylesheets="@../css/start.css" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="24.0" />
                </font>
@@ -644,9 +802,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <Label text="Исправить!" textFill="WHITE">
+                  <Label text="Удалить!" textFill="WHITE">
                      <font>
-                        <Font name="Times New Roman Bold" size="24.0" />
+                        <Font name="Times New Roman Bold" size="12.0" />
                      </font>
                      <effect>
                         <DropShadow blurType="GAUSSIAN" height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.5" width="5.0" />
@@ -668,6 +826,32 @@
          <StackPane.margin>
             <Insets right="30.0" top="20.0" />
          </StackPane.margin>
+      </Pane>
+      <Pane fx:id="up" accessibleRole="BUTTON" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#up" onMouseEntered="#onUp" onMouseExited="#neUp" onMousePressed="#onPU" onMouseReleased="#nePU" prefHeight="60.0" prefWidth="60.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
+         <StackPane.margin>
+            <Insets bottom="100.0" right="60.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../img/up.png" />
+         </ImageView>
+         <effect>
+            <Glow level="0.0">
+               <input>
+                  <DropShadow blurType="GAUSSIAN" height="10.0" offsetX="5.0" offsetY="5.0" radius="4.5" width="10.0">
+                     <input>
+                        <InnerShadow height="100.0" radius="49.5" width="100.0">
+                           <color>
+                              <Color opacity="0.0" />
+                           </color>
+                        </InnerShadow>
+                     </input>
+                  </DropShadow>
+               </input>
+            </Glow>
+         </effect>
       </Pane>
    </StackPane>
 </Pane>

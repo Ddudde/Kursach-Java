@@ -254,10 +254,11 @@ public class ProjController extends ModelController{
         if(node == nav.getChildren().size() - 1) onUser1();
         if(node <= nav.getChildren().size() - 1)
         {
-            onNav(newEvent(nav.getChildren().get(node)));
-            kv.add(new KeyValue(nav.getChildren().get(node).opacityProperty(), 1.0, inter));
-            kv.add(new KeyValue(nav.getChildren().get(node).mouseTransparentProperty(), true, inter));
-            nav.getChildren().get(node).mouseTransparentProperty().addListener(this::changed);
+            Node nod = nav.getChildren().get(node);
+            onNav(newEvent(nod));
+            kv.add(new KeyValue(nod.opacityProperty(), 1.0, inter));
+            kv.add(new KeyValue(nod.mouseTransparentProperty(), true, inter));
+            nod.mouseTransparentProperty().addListener(this::changed);
         }
         played(kv, 1000);
     }
@@ -265,10 +266,11 @@ public class ProjController extends ModelController{
     private void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) {
         if(new_val)
         {
+            Node nod = nav.getChildren().get(node);
             if(node == nav.getChildren().size() - 1) neUser();
-            neNav(newEvent(nav.getChildren().get(node)));
-            nav.getChildren().get(node).setMouseTransparent(false);
-            nav.getChildren().get(node).mouseTransparentProperty().removeListener(this::changed);
+            neNav(newEvent(nod));
+            nod.mouseTransparentProperty().removeListener(this::changed);
+            nod.setMouseTransparent(false);
             node++;
             onNavV();
         }
@@ -352,6 +354,7 @@ public class ProjController extends ModelController{
         boolean stat2 = getstat(par);
         if(stat1 && stat2)
         {
+            System.out.println(log.getText() + " " + usersImpl.getuser(log.getText()));
             if(usersImpl.getuser(log.getText()) != null && !Objects.equals(user.getUsername(), log.getText()))
             {
                 logzan.setVisible(true);
@@ -388,6 +391,11 @@ public class ProjController extends ModelController{
         Start.close_project();
         Start.start_scene("/fxml/start.fxml");
         Start.starts();
+        StartController startController = Start.loader.getController();
+        startController.setPer_rep(per_rep);
+        startController.setPer_reg(per_reg);
+        if(this.net_rep.isVisible()) startController.onWarn(startController.net_rep);
+        if(this.net_reg.isVisible()) startController.onWarn(startController.net_reg);
     }
 
     public void ranpar()

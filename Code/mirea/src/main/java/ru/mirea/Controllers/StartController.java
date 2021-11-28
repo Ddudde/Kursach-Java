@@ -35,7 +35,7 @@ import java.util.List;
 public class StartController extends ModelController{
 
     @FXML
-    private ScrollPane scrpan;
+    public ScrollPane scrpan;
 
     @FXML
     private Pane up;
@@ -82,6 +82,11 @@ public class StartController extends ModelController{
     @FXML
     private Pane r_caps;
 
+    @FXML
+    private Pane logos;
+
+    private int node = 0;
+
     private boolean caps_lock = false;
 
     private boolean login = true;
@@ -94,10 +99,42 @@ public class StartController extends ModelController{
 
     private User reg_us;
 
+    public void onLogos()
+    {
+        List<KeyValue> kv = new ArrayList<>();
+        if(node <= logos.getChildren().size() - 1)
+        {
+            Node nod = logos.getChildren().get(node);
+            nod.setTranslateX(-175);
+            Glow glow = (Glow) nod.getEffect();
+            kv.add(new KeyValue(nod.opacityProperty(), 1.0, inter));
+            kv.add(new KeyValue(glow.levelProperty(), 1.0, inter));
+            kv.add(new KeyValue(nod.translateXProperty(), 0, inter));
+            kv.add(new KeyValue(nod.mouseTransparentProperty(), true, inter));
+            nod.mouseTransparentProperty().addListener(this::finished);
+            played(kv, 1000);
+        }
+    }
+
+    private void finished(ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) {
+        if(new_val)
+        {
+            Node nod = logos.getChildren().get(node);
+            List<KeyValue> kv = new ArrayList<>();
+            Glow glow = (Glow) nod.getEffect();
+            kv.add(new KeyValue(glow.levelProperty(), 0.0, inter));
+            played(kv, 1000);
+            nod.mouseTransparentProperty().removeListener(this::finished);
+            nod.setMouseTransparent(false);
+            node++;
+            onLogos();
+        }
+    }
+
     public void init() {
+        up();
         zagr.setVisible(false);
         prilozh.setVisible(true);
-        Platform.runLater(this::run);
         usersImpl = (UsersImpl) MireaApplication.ctx.getBean("usersImpl");
         caps_lock = Toolkit.getDefaultToolkit().getLockingKeyState(java.awt.event.KeyEvent.VK_CAPS_LOCK);
         set_caps();
@@ -119,11 +156,6 @@ public class StartController extends ModelController{
             up.setVisible(false);
             Start.player.play();
         }
-    }
-
-    private void run()
-    {
-        for(Node n : Start.primStage.getScene().getRoot().getChildrenUnmodifiable()) n.requestFocus();
     }
 
     public void onEnterR(KeyEvent keyEvent)
@@ -211,7 +243,7 @@ public class StartController extends ModelController{
                 usersImpl.addorsave(user);
                 toauth();
             } else {
-                if(!ModelController.inet) Start.off_reg.remove(reg_us.getUsername());
+                Start.off_reg.remove(reg_us.getUsername());
                 reg_us.setUsername(r_log.getText());
                 reg_us.setPassword(r_par.getText());
                 reg_us.setIcons(ico);
@@ -241,7 +273,12 @@ public class StartController extends ModelController{
                 Start.usename = a_log.getText();
                 Start.close_start();
                 Start.start_scene("/fxml/project.fxml");
-                ((ProjController)Start.loader.getController()).init();
+                ProjController projController = Start.loader.getController();
+                projController.setPer_rep(per_rep);
+                projController.setPer_reg(per_reg);
+                projController.init();
+                if(this.net_rep.isVisible()) projController.onWarn(projController.net_rep);
+                if(this.net_reg.isVisible()) projController.onWarn(projController.net_reg);
             }
         }
     }
@@ -397,11 +434,11 @@ public class StartController extends ModelController{
 
     public void down()
     {
-        scrpan.setVvalue(720);
+        Platform.runLater(() -> scrpan.setVvalue(1D));
     }
 
     public void up()
     {
-        scrpan.setVvalue(0);
+        Platform.runLater(() -> scrpan.setVvalue(0.0));
     }
 }

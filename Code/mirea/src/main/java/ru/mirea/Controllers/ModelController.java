@@ -170,13 +170,16 @@ public class ModelController{
             ProjController projController = (ProjController) this;
             projController.toBegin();
             StartController startController = Start.loader.getController();
+            startController.setPer_rep(per_rep);
+            startController.setPer_reg(per_reg);
             startController.neWarn(startController.ernull);
             startController.neWarn(startController.erpat);
             startController.neWarn(startController.gen);
             User user = startController.usersImpl.getuser(per_reg);
+            System.out.println(user);
             startController.time_reg.setText(new SimpleDateFormat("HH:mm").format(new Date()));
             startController.onWarn(startController.net_reg);
-            startController.setPer_reg(per_reg);
+            if(this.net_rep.isVisible()) startController.onWarn(startController.net_rep);
             startController.toreg(user);
             startController.down();
         }
@@ -189,6 +192,8 @@ public class ModelController{
             Start.close_start();
             Start.start_scene("/fxml/project.fxml");
             ProjController projController = Start.loader.getController();
+            projController.setPer_rep(per_rep);
+            projController.setPer_reg(per_reg);
             projController.neWarn(projController.ernull);
             projController.neWarn(projController.erpat);
             projController.neWarn(projController.gen);
@@ -196,13 +201,24 @@ public class ModelController{
             projController.init();
             projController.time_rep.setText(new SimpleDateFormat("HH:mm").format(new Date()));
             projController.onWarn(projController.net_rep);
-            projController.setPer_rep(per_reg);
+            if(this.net_reg.isVisible()) projController.onWarn(projController.net_reg);
             projController.toEdit(user);
         } else {
             ProjController projController = (ProjController) this;
             User user = projController.usersImpl.getuser(Start.usename);
             projController.toEdit(user);
         }
+    }
+
+    public void neNREG()
+    {
+        neWarn(net_reg);
+        Start.off_reg.remove(per_reg);
+    }
+
+    public void neNREP()
+    {
+        neWarn(net_rep);
     }
 
     public void textch(KeyEvent keyEvent)

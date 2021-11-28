@@ -53,10 +53,11 @@ public class Start extends Application {
         primStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/ico.png")));
         primStage.setTitle("Комплектующие для ПК");
         primStage.setResizable(false);
-        start_scene("/fxml/start.fxml");
-        start_spring();
         load_users();
         load_commands();
+        start_scene("/fxml/start.fxml");
+        ((StartController)loader.getController()).onLogos();
+        start_spring();
         //close_start();
         //start_scene("/fxml/project.fxml");
         //((ProjController)loader.getController()).init();
@@ -175,7 +176,8 @@ public class Start extends Application {
         }
         ModelController controller = loader.getController();
         for(String log : off_reg) {
-            if (off_reg.contains(log) && !on_reg.contains(log) && !cont(map1, log)) {
+            System.out.println(!on_reg.contains(log) + " " + !map1.containsKey(log));//!cont(map1, log));
+            if (!on_reg.contains(log) && !map1.containsKey(log)) {
                 controller.neWarn(controller.ernull);
                 controller.neWarn(controller.erpat);
                 controller.neWarn(controller.gen);
@@ -244,6 +246,7 @@ public class Start extends Application {
         {
             if (Objects.equals(user.getUsername(), log)) {
                 a = true;
+                System.out.println(user.getUsername() + " " + log);
                 break;
             }
         }
