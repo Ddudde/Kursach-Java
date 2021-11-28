@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a91a3c2d-f74b-4e21-b132-9ba96a973ee7" name="Default Changelist" comment="Final Code!">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exec.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a91a3c2d-f74b-4e21-b132-9ba96a973ee7" name="Default Changelist" comment="Compile to EXE final code!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -210,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638119673650</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Compile to EXE final code!">
+      <created>1638120344895</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1638120344895</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -301,7 +305,8 @@
     <MESSAGE value="Final gui" />
     <MESSAGE value="Pre Final" />
     <MESSAGE value="Final Code!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Code!" />
+    <MESSAGE value="Compile to EXE final code!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Compile to EXE final code!" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
