@@ -2,7 +2,7 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>F:\Desk\Rep\Kursach-Java\Code\mirea\build\libs\Comps-0.9.war</jar>
+  <jar>F:\Desk\Rep\Kursach-Java\Code\mirea\build\libs\Comps-1.0.war</jar>
   <outfile>F:\Desk\Rep\Kursach-Java\Code\mirea\exe\Comps.exe</outfile>
   <errTitle>Error! Not installed JRE</errTitle>
   <cmdLine></cmdLine>
