@@ -51,7 +51,7 @@ public class Start extends Application {
     public void start(Stage primaryStage) throws IOException {
         primStage = primaryStage;
         primStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/ico.png")));
-        primStage.setTitle("Комплектующие для ПК");
+        primStage.setTitle("Веб-сайт «PCBY»");
         primStage.setResizable(false);
         load_users();
         load_commands();

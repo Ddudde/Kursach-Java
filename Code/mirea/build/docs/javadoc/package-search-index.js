@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.mirea"},{"l":"ru.mirea.Controllers"},{"l":"ru.mirea.data"},{"l":"ru.mirea.ThreeD"}];updateSearchResults();
