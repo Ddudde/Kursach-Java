@@ -23,19 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a91a3c2d-f74b-4e21-b132-9ba96a973ee7" name="Default Changelist" comment="Compile to EXE final code!">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mirea.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/Comps-1.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Comps-1.0.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootWar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/bootWar/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exe/Comps.exe" beforeDir="false" afterPath="$PROJECT_DIR$/exe/Comps.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Мурадов_ИКБО-16-19_Презентация.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../Мурадов_ИКБО-16-19_Презентация.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Мурадов_ИКБО-16-19_Презентация.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Мурадов_ИКБО-16-19_Презентация.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Шаблон отзыва на КР.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../../Шаблон отзыва на КР.doc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Шаблон отзыва на КР_Новый_26052021.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Шаблон отзыва на КР_Новый_26052021.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -139,7 +142,7 @@
       <command value="gradle javadoc" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.mirea [runnn_exe]">
+  <component name="RunManager" selected="Application.MireaApplication">
     <configuration name="MireaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.mirea.MireaApplication" />
       <module name="mirea.main" />
@@ -204,9 +207,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MireaApplication" />
         <item itemvalue="Gradle.mirea [runnn_exe]" />
         <item itemvalue="Gradle.mirea [javadoc]" />
-        <item itemvalue="Application.MireaApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -359,7 +362,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
